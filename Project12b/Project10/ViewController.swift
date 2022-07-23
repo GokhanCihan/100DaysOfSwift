@@ -103,5 +103,15 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         return paths[0]
     }
     
+    func save() {
+        let jsonEncoder = JSONEncoder()
+        if let dataToBeSaved = try? jsonEncoder.encode(people) {
+            let defaults = UserDefaults.standard
+            defaults.set(dataToBeSaved, forKey: "people")
+        } else {
+            print("Failed to save people")
+        }
+    }
+    
 }
 
