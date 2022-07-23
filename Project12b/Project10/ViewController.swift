@@ -59,6 +59,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         
         ac.addAction(UIAlertAction(title: "Delete", style: .destructive) {action in
             self.people.remove(at: indexPath.item)
+            self.save()
             self.collectionView.reloadData()
         }
         )
@@ -72,7 +73,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
             renameAc.addAction(UIAlertAction(title: "OK", style: .default) {[weak self, weak renameAc] _ in
                 guard let newName = renameAc?.textFields?[0].text else {return}
                 person.name = newName
-                
+                self?.save()
                 self?.collectionView.reloadData()
             }
             )
@@ -103,6 +104,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         
         let Person = Person(name: "Unknown", image: imageName)
         people.append(Person)
+        self.save()
         collectionView.reloadData()
         
         dismiss(animated: true)
