@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     var score = 0
     var correctAnswer = 0
     var questionCounter = 0
+    var highScore = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,17 @@ class ViewController: UIViewController {
         
         askQuestion()
         
+        let defaults = UserDefaults.standard
+        
+        if let dataSaved = defaults.object(forKey: "highScore") as? Data {
+            let jsonDecoder = JSONDecoder()
+            
+            do {
+                highScore = try jsonDecoder.decode(Int.self, from: dataSaved)
+            } catch {
+                print("Failed to load data.")
+            }
+        }
     }
 
     func askQuestion(action: UIAlertAction! = nil) {
@@ -69,7 +81,13 @@ class ViewController: UIViewController {
         let ac = UIAlertController(title: title, message: "", preferredStyle: .alert)
             
         if questionCounter == 10 {
-            ac.message = "Your final score is \(score)"
+            if score > highScore {
+                ac.message = "Conguratulations!! You beat the highest score"
+                self.save()
+            } else {
+                ac.message = "Your final score is \(score)"
+            }
+            
             ac.addAction(UIAlertAction(title: "restart", style: .default, handler: askQuestion))
             questionCounter = 0
             score = 0
@@ -84,6 +102,17 @@ class ViewController: UIViewController {
         let ac = UIAlertController(title: "Score", message: "\(score)", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "close", style: .cancel))
         present(ac, animated: true)
+    }
+    
+    func save() {
+        let jsonEncoder = JSONEncoder()
+        
+        if let dataSave = try? jsonEncoder.encode(highScore) {
+            let defaults = UserDefaults.standard
+            defaults.set(dataSave, forKey: "highScore")
+        } else {
+            print("Failed to save data.")
+        }
     }
 }
 
