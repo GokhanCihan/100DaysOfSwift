@@ -9,11 +9,20 @@ import UIKit
 
 class ViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var photos = [Photo]()
-    var ac = UIAlertController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // load defaults here
+        let defaults = UserDefaults.standard
+        
+        if let savedData = defaults.object(forKey: "photos") as? Data {
+            let jsonDecoder = JSONDecoder()
+            do {
+                photos = try jsonDecoder.decode([Photo].self, from: savedData)
+            } catch {
+                print("\n Failed to load data \n")
+            }
+        }
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(addNewPhoto))
     }
@@ -38,7 +47,7 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
             ac.addAction(UIAlertAction(title: "Save", style: .default) {[weak ac, weak self] _ in
                 guard let newCaption = ac?.textFields?[0].text else {return}
                 self?.photos[indexPath.row].caption = newCaption
-                //call save()
+                self?.save()
                 self?.tableView.reloadData()
             }
             )
@@ -76,8 +85,8 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
         
         let photo = Photo(path: imagePath, caption: "Unknown")
 
-        //call save()
         self.photos.append(photo)
+        self.save()
         dismiss(animated: true)
         self.tableView.reloadData()
     }
@@ -88,5 +97,13 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
     }
     
     //create save() function
+    func save() {
+        let jsonEncoder = JSONEncoder()
+        
+        if let saveData = try? jsonEncoder.encode(photos) as Data {
+            let defaults = UserDefaults.standard
+            defaults.set(saveData, forKey: "photos")
+        }
+    }
 }
 
