@@ -12,7 +12,7 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // load defaults here
+        // load defaults
         let defaults = UserDefaults.standard
         
         if let savedData = defaults.object(forKey: "photos") as? Data {

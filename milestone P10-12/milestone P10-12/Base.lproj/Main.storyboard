@@ -55,16 +55,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JaO-gm-cWq">
-                                <rect key="frame" x="-2" y="50" width="414" height="896"/>
+                                <rect key="frame" x="20" y="44" width="374" height="750"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RNS-vE-ozN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="JaO-gm-cWq" firstAttribute="leading" secondItem="jQI-R6-EeU" secondAttribute="leadingMargin" constant="-22" id="Er2-SY-GyB"/>
-                            <constraint firstItem="JaO-gm-cWq" firstAttribute="top" secondItem="RNS-vE-ozN" secondAttribute="top" constant="6" id="NQs-PJ-ppW"/>
-                            <constraint firstItem="RNS-vE-ozN" firstAttribute="trailing" secondItem="JaO-gm-cWq" secondAttribute="trailing" constant="2" id="P1x-aN-u1O"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="JaO-gm-cWq" secondAttribute="bottom" constant="-84" id="TID-QE-7Th"/>
+                            <constraint firstItem="RNS-vE-ozN" firstAttribute="trailing" secondItem="JaO-gm-cWq" secondAttribute="trailing" constant="20" id="7uV-7h-kkZ"/>
+                            <constraint firstItem="RNS-vE-ozN" firstAttribute="bottom" secondItem="JaO-gm-cWq" secondAttribute="bottom" constant="68" id="BWV-du-HFT"/>
+                            <constraint firstItem="JaO-gm-cWq" firstAttribute="top" secondItem="RNS-vE-ozN" secondAttribute="top" id="Deb-hR-9dh"/>
+                            <constraint firstItem="JaO-gm-cWq" firstAttribute="leading" secondItem="RNS-vE-ozN" secondAttribute="leading" constant="20" id="KKF-pb-vYM" userLabel="Image View.leading = Safe Area.leading"/>
                         </constraints>
                     </view>
                     <connections>
