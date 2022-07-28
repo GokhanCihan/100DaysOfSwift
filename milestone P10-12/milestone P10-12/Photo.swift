@@ -8,11 +8,11 @@
 import UIKit
 
 class Photo: NSObject, Codable {
-    var name: String
+    var path: URL
     var caption: String
     
-    init(name: String, caption: String) {
-        self.name = name
+    init(path: URL, caption: String) {
+        self.path = path
         self.caption = caption
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		765EFED92891880800933FBE /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765EFED82891880800933FBE /* Photo.swift */; };
+		76A0AD5028927238008D2DF6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A0AD4F28927238008D2DF6 /* DetailViewController.swift */; };
 		76CA19FB28916004009DEC2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CA19FA28916004009DEC2F /* AppDelegate.swift */; };
 		76CA19FD28916004009DEC2F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CA19FC28916004009DEC2F /* SceneDelegate.swift */; };
 		76CA19FF28916004009DEC2F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CA19FE28916004009DEC2F /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		765EFED82891880800933FBE /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		76A0AD4F28927238008D2DF6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		76CA19F728916004009DEC2F /* milestone P10-12.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "milestone P10-12.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CA19FA28916004009DEC2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76CA19FC28916004009DEC2F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				76CA19FE28916004009DEC2F /* ViewController.swift */,
 				765EFED82891880800933FBE /* Photo.swift */,
 				76CA1A0028916004009DEC2F /* Main.storyboard */,
+				76A0AD4F28927238008D2DF6 /* DetailViewController.swift */,
 				76CA1A0328916006009DEC2F /* Assets.xcassets */,
 				76CA1A0528916006009DEC2F /* LaunchScreen.storyboard */,
 				76CA1A0828916006009DEC2F /* Info.plist */,
@@ -143,6 +146,7 @@
 			files = (
 				765EFED92891880800933FBE /* Photo.swift in Sources */,
 				76CA19FF28916004009DEC2F /* ViewController.swift in Sources */,
+				76A0AD5028927238008D2DF6 /* DetailViewController.swift in Sources */,
 				76CA19FB28916004009DEC2F /* AppDelegate.swift in Sources */,
 				76CA19FD28916004009DEC2F /* SceneDelegate.swift in Sources */,
 			);

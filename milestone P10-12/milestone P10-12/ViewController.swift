@@ -13,7 +13,7 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // load defaults here
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(addNewPhoto))
     }
@@ -26,6 +26,30 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
         let cell = tableView.dequeueReusableCell(withIdentifier: "Caption", for: indexPath)
         cell.textLabel?.text = photos[indexPath.row].caption
         return cell
+    }
+    
+    //rename or show detail view
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if photos[indexPath.row].caption == "Unknown" {
+            let ac = UIAlertController(title: "Rename photo as:", message: nil, preferredStyle: .alert)
+            ac.addTextField()
+            
+            ac.addAction(UIAlertAction(title: "Save", style: .default) {[weak ac, weak self] _ in
+                guard let newCaption = ac?.textFields?[0].text else {return}
+                self?.photos[indexPath.row].caption = newCaption
+                //call save()
+                self?.tableView.reloadData()
+            }
+            )
+            present(ac, animated: true)
+        } else {
+            if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+                vc.selectedImage = photos[indexPath.row].path
+                vc.imageTitle = photos[indexPath.row].caption
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
 
     @objc func addNewPhoto() {
@@ -50,10 +74,12 @@ class ViewController: UITableViewController, UIImagePickerControllerDelegate, UI
             try? jpegData.write(to: imagePath)
         }
         
-        let photo = Photo(name: imageName, caption: "Unknown")
+        let photo = Photo(path: imagePath, caption: "Unknown")
+
         //call save()
         self.photos.append(photo)
         dismiss(animated: true)
+        self.tableView.reloadData()
     }
     
     func getDocumentsDirectory() -> URL {
