@@ -33,6 +33,12 @@ class WhackSlot: SKNode {
     func show(hideTime: Double) {
         if isVisible {return}
         
+        if let mudEmitter = SKEmitterNode(fileNamed: "mudEmitter"){
+            mudEmitter.particleBlendMode = .alpha
+            mudEmitter.zPosition = 1
+            mudEmitter.position = CGPoint(x: 0, y: -30)
+            addChild(mudEmitter)
+        }
         charNode.xScale = 1
         charNode.yScale = 1
         
@@ -62,6 +68,15 @@ class WhackSlot: SKNode {
     
     func hit() {
         isHit = true
+        
+        
+        if let smokeEmitter = SKEmitterNode(fileNamed: "penguinHit") {
+            smokeEmitter.position = CGPoint(x: 0, y: 50)
+            addChild(smokeEmitter)
+            let hide = SKAction.moveBy(x: 0, y: 70, duration: 1)
+            let del = SKAction.removeFromParent()
+            smokeEmitter.run(SKAction.sequence([hide, del]))
+        }
         
         let delay = SKAction.wait(forDuration: 0.25)
         let hide = SKAction.moveBy(x: 0, y: -80, duration: 0.5)
