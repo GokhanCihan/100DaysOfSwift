@@ -57,6 +57,10 @@ class ViewController: UIViewController {
         
         //button.setImage assigns an image to the button
         //UIimage(named:) loads an image from an app bundle
+        button1.transform = .identity
+        button2.transform = .identity
+        button3.transform = .identity
+        
         button1.setImage(UIImage(named: countries[0]), for: .normal)
         button2.setImage(UIImage(named: countries[1]), for: .normal)
         button3.setImage(UIImage(named: countries[2]), for: .normal)
@@ -67,6 +71,11 @@ class ViewController: UIViewController {
 
     @IBAction func buttonTapped(_ sender: UIButton) {
         var title: String
+        
+        UIView.animate(withDuration: 2, delay: 0, usingSpringWithDamping: 0.1, initialSpringVelocity: 5, options: [],
+                       animations: {
+            sender.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        })
         
         if sender.tag == correctAnswer {
             title = "correct"
@@ -95,6 +104,7 @@ class ViewController: UIViewController {
             ac.message = "Your score is \(score)"
             ac.addAction(UIAlertAction(title: "continue", style: .default, handler: askQuestion))
         }
+        
         present(ac, animated: true)
     }
     
