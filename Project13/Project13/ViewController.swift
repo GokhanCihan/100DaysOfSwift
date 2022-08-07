@@ -45,7 +45,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         guard let image = info[.editedImage] as? UIImage else {return}
         
         dismiss(animated: true)
+        
+        imageView.alpha = 0
         currentImage = image
+        
+        UIView.animate(withDuration: 2, delay: 0, options: [],
+                       animations: {
+            self.imageView.alpha = 1
+        })
         
         let imageToFilter = CIImage(image: currentImage)
         currentFilter.setValue(imageToFilter, forKey: kCIInputImageKey)
