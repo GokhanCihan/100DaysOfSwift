@@ -13,6 +13,9 @@
 		7653CCC828A3ED83001E966F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7653CCC628A3ED83001E966F /* Main.storyboard */; };
 		7653CCCA28A3ED84001E966F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7653CCC928A3ED84001E966F /* Assets.xcassets */; };
 		7653CCCD28A3ED84001E966F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7653CCCB28A3ED84001E966F /* LaunchScreen.storyboard */; };
+		7653CCD528A3EF80001E966F /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 7653CCD428A3EF80001E966F /* countries.json */; };
+		7653CCD728A3F49C001E966F /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653CCD628A3F49C001E966F /* Country.swift */; };
+		7653CCD928A40878001E966F /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653CCD828A40878001E966F /* Name.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		7653CCC928A3ED84001E966F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7653CCCC28A3ED84001E966F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7653CCCE28A3ED84001E966F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7653CCD428A3EF80001E966F /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
+		7653CCD628A3F49C001E966F /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		7653CCD828A40878001E966F /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +65,13 @@
 				7653CCC028A3ED83001E966F /* AppDelegate.swift */,
 				7653CCC228A3ED83001E966F /* SceneDelegate.swift */,
 				7653CCC428A3ED83001E966F /* ViewController.swift */,
+				7653CCD628A3F49C001E966F /* Country.swift */,
+				7653CCD828A40878001E966F /* Name.swift */,
 				7653CCC628A3ED83001E966F /* Main.storyboard */,
 				7653CCC928A3ED84001E966F /* Assets.xcassets */,
 				7653CCCB28A3ED84001E966F /* LaunchScreen.storyboard */,
 				7653CCCE28A3ED84001E966F /* Info.plist */,
+				7653CCD428A3EF80001E966F /* countries.json */,
 			);
 			path = "milestone P13-15 (country details)";
 			sourceTree = "<group>";
@@ -127,6 +136,7 @@
 			files = (
 				7653CCCD28A3ED84001E966F /* LaunchScreen.storyboard in Resources */,
 				7653CCCA28A3ED84001E966F /* Assets.xcassets in Resources */,
+				7653CCD528A3EF80001E966F /* countries.json in Resources */,
 				7653CCC828A3ED83001E966F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,6 +148,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7653CCD928A40878001E966F /* Name.swift in Sources */,
+				7653CCD728A3F49C001E966F /* Country.swift in Sources */,
 				7653CCC528A3ED83001E966F /* ViewController.swift in Sources */,
 				7653CCC128A3ED83001E966F /* AppDelegate.swift in Sources */,
 				7653CCC328A3ED83001E966F /* SceneDelegate.swift in Sources */,
