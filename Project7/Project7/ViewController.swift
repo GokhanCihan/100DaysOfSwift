@@ -85,6 +85,7 @@ class ViewController: UITableViewController {
         if let jsonPetitions = try? dataDecoder.decode(Petitions.self, from: json){
             petitions = jsonPetitions.results
             tableView.reloadData()
+            print(jsonPetitions)
         }
     }
     
