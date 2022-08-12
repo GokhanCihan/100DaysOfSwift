@@ -1,8 +1,8 @@
 //
-//  Native.swift
+//  Name.swift
 //  milestone P13-15 (country details)
 //
-//  Created by Gökhan on 10.08.2022.
+//  Created by Gökhan on 13.08.2022.
 //
 
 import Foundation

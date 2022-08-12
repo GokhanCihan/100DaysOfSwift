@@ -8,8 +8,9 @@
 import UIKit
 
 class ViewController: UITableViewController {
-    var countries = [Country]()
+    var countries = [String: Dictionary<String, Any>]()
     var countryNames = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -39,13 +40,28 @@ class ViewController: UITableViewController {
         let dataDecoder = JSONDecoder()
         do {
             let jsonCountries = try dataDecoder.decode([Country].self, from: json)
-            countries = jsonCountries
             
-            for i in 0..<countries.count {
-                countryNames.append(countries[i].name.common)
+            for i in 0..<jsonCountries.count {
+                var tempCountryDict = [String: Any]()
+                tempCountryDict["unMember"] = jsonCountries[i].unMember
+                
+                var currencies = [String]()
+                for currency in jsonCountries[i].currencies.values.enumerated() {
+                    currencies.append(currency.element["name"]!)
+                }
+                
+                tempCountryDict["currencies"] = jsonCountries[i].currencies.values
+                tempCountryDict["capital"] = jsonCountries[i].capital
+                tempCountryDict["region"] = jsonCountries[i].region
+                tempCountryDict["subregion"] = jsonCountries[i].subregion
+                tempCountryDict["language"] = jsonCountries[i].languages.values
+                tempCountryDict["latlng"] = jsonCountries[i].latlng
+                tempCountryDict["area"] = jsonCountries[i] .area
+                tempCountryDict["flag"] = jsonCountries[i].flag
+                
+                countries[jsonCountries[i].name.common] = tempCountryDict
+                countryNames.append(jsonCountries[i].name.common)
             }
-            
-            print(jsonCountries.count)
         } catch{
             print(error)
         }
