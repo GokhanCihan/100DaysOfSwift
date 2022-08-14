@@ -39,7 +39,7 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             let selectedCountry = countryNames[indexPath.row]
-            vc.flagEmoji = countries[selectedCountry]!["flag"] 
+            vc.flagEmoji = countries[selectedCountry]!["flag"] as? String
             navigationController?.pushViewController(vc, animated: true)
         }
     }

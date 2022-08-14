@@ -45,23 +45,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hB-qu-cUO">
-                                <rect key="frame" x="186" y="44" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="United Emirated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4U-e6-htA">
+                                <rect key="frame" x="146" y="89" width="122.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZy-hi-8IR">
-                                <rect key="frame" x="186" y="43" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZy-hi-8IR">
+                                <rect key="frame" x="278.5" y="81.5" width="55.5" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mAE-ZI-jxg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="t4U-e6-htA" firstAttribute="top" secondItem="mAE-ZI-jxg" secondAttribute="top" constant="45" id="B5u-g7-ybz"/>
+                            <constraint firstItem="SZy-hi-8IR" firstAttribute="centerY" secondItem="t4U-e6-htA" secondAttribute="centerY" id="MMB-GK-7dS"/>
+                            <constraint firstItem="t4U-e6-htA" firstAttribute="centerX" secondItem="mAE-ZI-jxg" secondAttribute="centerX" id="NMf-Pj-Orb"/>
+                            <constraint firstItem="SZy-hi-8IR" firstAttribute="leading" secondItem="t4U-e6-htA" secondAttribute="trailing" constant="10" id="QbW-ls-xYq"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="flag" destination="SZy-hi-8IR" id="HYl-AI-1zI"/>
@@ -69,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IRb-yU-vAU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1664" y="-54"/>
+            <point key="canvasLocation" x="1663.7681159420292" y="-54.241071428571423"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hz5-KK-y3U">

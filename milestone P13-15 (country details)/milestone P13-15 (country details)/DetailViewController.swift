@@ -13,7 +13,8 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        flag.adjustsFontSizeToFitWidth = true
+        flag.text = flagEmoji
         // Do any additional setup after loading the view.
     }
     
