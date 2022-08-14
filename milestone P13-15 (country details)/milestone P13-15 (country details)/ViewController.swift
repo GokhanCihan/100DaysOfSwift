@@ -22,8 +22,8 @@ class ViewController: UITableViewController {
                 } catch {
                     print("error")
                 }
-                
             }
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -34,6 +34,14 @@ class ViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = "\(countryNames[indexPath.row])"
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            let selectedCountry = countryNames[indexPath.row]
+            vc.flagEmoji = countries[selectedCountry]!["flag"] 
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 
     func parseData(json: Data) {

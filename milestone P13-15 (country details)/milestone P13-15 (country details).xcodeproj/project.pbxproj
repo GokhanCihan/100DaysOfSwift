@@ -16,6 +16,7 @@
 		7653CCD528A3EF80001E966F /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 7653CCD428A3EF80001E966F /* countries.json */; };
 		7653CCD728A3F49C001E966F /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7653CCD628A3F49C001E966F /* Country.swift */; };
 		76A0AE9E28A6FD0F00607D63 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A0AE9D28A6FD0F00607D63 /* Name.swift */; };
+		76A1F00128A91F4800F814A9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A1F00028A91F4800F814A9 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		7653CCD428A3EF80001E966F /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
 		7653CCD628A3F49C001E966F /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		76A0AE9D28A6FD0F00607D63 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
+		76A1F00028A91F4800F814A9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				7653CCD628A3F49C001E966F /* Country.swift */,
 				76A0AE9D28A6FD0F00607D63 /* Name.swift */,
 				7653CCC628A3ED83001E966F /* Main.storyboard */,
+				76A1F00028A91F4800F814A9 /* DetailViewController.swift */,
 				7653CCC928A3ED84001E966F /* Assets.xcassets */,
 				7653CCCB28A3ED84001E966F /* LaunchScreen.storyboard */,
 				7653CCCE28A3ED84001E966F /* Info.plist */,
@@ -151,6 +154,7 @@
 				7653CCD728A3F49C001E966F /* Country.swift in Sources */,
 				7653CCC528A3ED83001E966F /* ViewController.swift in Sources */,
 				7653CCC128A3ED83001E966F /* AppDelegate.swift in Sources */,
+				76A1F00128A91F4800F814A9 /* DetailViewController.swift in Sources */,
 				7653CCC328A3ED83001E966F /* SceneDelegate.swift in Sources */,
 				76A0AE9E28A6FD0F00607D63 /* Name.swift in Sources */,
 			);
