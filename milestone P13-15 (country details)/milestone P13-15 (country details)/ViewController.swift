@@ -38,8 +38,19 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-            let selectedCountry = countryNames[indexPath.row]
-            vc.flagEmoji = countries[selectedCountry]!["flag"] as? String
+            let selectedCountryName = countryNames[indexPath.row]
+            let selectedCountryProperties = countries[selectedCountryName]!
+            
+            //send properties to detailviewcontroller
+            vc.flagEmoji = selectedCountryProperties["flag"] as? String
+            vc.countryNameLabelText = selectedCountryName
+            vc.selectedCountryCapitals = selectedCountryProperties["capital"]!
+            vc.selectedCountryCurrencies = selectedCountryProperties["currencies"]!
+            vc.selectedCountryLanguages = selectedCountryProperties["language"]!
+            vc.selectedCountryRegion = selectedCountryProperties["region"]!
+            vc.selectedCountrySubregion = selectedCountryProperties["subregion"]
+            vc.selectedCountryLatLng = selectedCountryProperties["latlng"]!
+            
             navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -58,7 +69,7 @@ class ViewController: UITableViewController {
                     currencies.append(currency.element["name"]!)
                 }
                 
-                tempCountryDict["currencies"] = jsonCountries[i].currencies.values
+                tempCountryDict["currencies"] = currencies
                 tempCountryDict["capital"] = jsonCountries[i].capital
                 tempCountryDict["region"] = jsonCountries[i].region
                 tempCountryDict["subregion"] = jsonCountries[i].subregion

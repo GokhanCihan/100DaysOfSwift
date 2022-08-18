@@ -9,14 +9,25 @@ import UIKit
 
 class DetailViewController: UIViewController {
     @IBOutlet var flag: UILabel!
+    @IBOutlet var selectedCountryLabel: UILabel!
     var flagEmoji: String?
+    var countryNameLabelText: String?
+    var selectedCountryCapitals: Any?
+    var selectedCountryCurrencies: Any?
+    var selectedCountryLanguages: Any?
+    var selectedCountryRegion: Any?
+    var selectedCountrySubregion: Any?
+    var selectedCountryLatLng: Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         flag.adjustsFontSizeToFitWidth = true
         flag.text = flagEmoji
+        selectedCountryLabel.text = countryNameLabelText
+        
         // Do any additional setup after loading the view.
     }
+    
     
 
     /*
