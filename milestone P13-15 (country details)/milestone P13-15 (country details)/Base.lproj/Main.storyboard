@@ -45,42 +45,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4U-e6-htA">
-                                <rect key="frame" x="152" y="89" width="110.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZy-hi-8IR">
-                                <rect key="frame" x="272.5" y="81.5" width="55.5" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <rect key="frame" x="117.5" y="44" width="179" height="120"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Capital(s):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yv7-eP-pLn" userLabel="Capital">
-                                <rect key="frame" x="20" y="145" width="92" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spoken Languages:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I6E-pN-EM7" userLabel="Languages">
+                                <rect key="frame" x="20" y="367" width="173" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Currencies:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aS3-LF-kFk" userLabel="Currencies">
+                                <rect key="frame" x="20" y="296" width="101" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Capital(s):" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yv7-eP-pLn" userLabel="Capital">
+                                <rect key="frame" x="20" y="248" width="92" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUS-0U-eOH" userLabel="Location">
+                                <rect key="frame" x="20" y="190" width="81" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LocationLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNw-M1-j0n">
+                                <rect key="frame" x="109" y="191.5" width="107" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUS-0U-eOH" userLabel="Location">
-                                <rect key="frame" x="20" y="174" width="70" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="CapitalsLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWI-vt-Lht">
+                                <rect key="frame" x="120" y="247" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Spoken Languages:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I6E-pN-EM7" userLabel="Languages">
-                                <rect key="frame" x="20" y="203" width="150" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CurrenciesLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Jk-0R-crc" userLabel="CurrenciesLabel">
+                                <rect key="frame" x="129" y="309.5" width="124" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Currencies:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aS3-LF-kFk" userLabel="Currencies">
-                                <rect key="frame" x="20" y="232" width="88" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LanguagesLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTM-70-jaT" userLabel="LanguagesLabel">
+                                <rect key="frame" x="201" y="368.5" width="125.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -89,15 +103,32 @@
                         <viewLayoutGuide key="safeArea" id="mAE-ZI-jxg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="t4U-e6-htA" firstAttribute="top" secondItem="mAE-ZI-jxg" secondAttribute="top" constant="45" id="B5u-g7-ybz"/>
-                            <constraint firstItem="SZy-hi-8IR" firstAttribute="centerY" secondItem="t4U-e6-htA" secondAttribute="centerY" id="MMB-GK-7dS"/>
-                            <constraint firstItem="t4U-e6-htA" firstAttribute="centerX" secondItem="mAE-ZI-jxg" secondAttribute="centerX" id="NMf-Pj-Orb"/>
-                            <constraint firstItem="SZy-hi-8IR" firstAttribute="leading" secondItem="t4U-e6-htA" secondAttribute="trailing" constant="10" id="QbW-ls-xYq"/>
+                            <constraint firstItem="JWI-vt-Lht" firstAttribute="leading" secondItem="yv7-eP-pLn" secondAttribute="trailing" constant="8" id="0uk-yF-Ffc"/>
+                            <constraint firstItem="SZy-hi-8IR" firstAttribute="centerX" secondItem="mAE-ZI-jxg" secondAttribute="centerX" id="4DU-cL-wWW"/>
+                            <constraint firstItem="I6E-pN-EM7" firstAttribute="top" secondItem="aS3-LF-kFk" secondAttribute="bottom" constant="35" id="5ig-Is-fVg"/>
+                            <constraint firstItem="aS3-LF-kFk" firstAttribute="top" secondItem="yv7-eP-pLn" secondAttribute="bottom" constant="35" id="MrU-Ca-tmH"/>
+                            <constraint firstItem="yv7-eP-pLn" firstAttribute="leading" secondItem="mAE-ZI-jxg" secondAttribute="leading" constant="20" id="PVx-Nd-uhE"/>
+                            <constraint firstItem="EUS-0U-eOH" firstAttribute="top" secondItem="SZy-hi-8IR" secondAttribute="bottom" constant="26" id="RpG-eq-SjY"/>
+                            <constraint firstItem="EUS-0U-eOH" firstAttribute="leading" secondItem="mAE-ZI-jxg" secondAttribute="leading" constant="20" id="VET-SD-11E"/>
+                            <constraint firstItem="cTM-70-jaT" firstAttribute="centerY" secondItem="I6E-pN-EM7" secondAttribute="centerY" id="WJ9-I4-Pd3"/>
+                            <constraint firstItem="1Jk-0R-crc" firstAttribute="centerY" secondItem="aS3-LF-kFk" secondAttribute="centerY" id="WeH-tR-06b"/>
+                            <constraint firstItem="YNw-M1-j0n" firstAttribute="leading" secondItem="EUS-0U-eOH" secondAttribute="trailing" constant="8" id="bov-Eg-DQ6"/>
+                            <constraint firstItem="I6E-pN-EM7" firstAttribute="leading" secondItem="mAE-ZI-jxg" secondAttribute="leading" constant="20" id="cH5-59-TeB"/>
+                            <constraint firstItem="yv7-eP-pLn" firstAttribute="top" secondItem="EUS-0U-eOH" secondAttribute="bottom" constant="35" id="fdk-IM-JCs"/>
+                            <constraint firstItem="1Jk-0R-crc" firstAttribute="leading" secondItem="aS3-LF-kFk" secondAttribute="trailing" constant="8" symbolic="YES" id="h95-yh-LXs"/>
+                            <constraint firstItem="SZy-hi-8IR" firstAttribute="top" secondItem="mAE-ZI-jxg" secondAttribute="top" id="kYb-Ig-HFM" userLabel="Flag.top = Safe Area.top"/>
+                            <constraint firstItem="JWI-vt-Lht" firstAttribute="centerY" secondItem="yv7-eP-pLn" secondAttribute="centerY" constant="-1" id="mOf-ym-1rs"/>
+                            <constraint firstItem="aS3-LF-kFk" firstAttribute="leading" secondItem="mAE-ZI-jxg" secondAttribute="leading" constant="20" id="oHh-Hw-kth"/>
+                            <constraint firstItem="cTM-70-jaT" firstAttribute="leading" secondItem="I6E-pN-EM7" secondAttribute="trailing" constant="8" symbolic="YES" id="sJa-HB-tum"/>
+                            <constraint firstItem="YNw-M1-j0n" firstAttribute="centerY" secondItem="EUS-0U-eOH" secondAttribute="centerY" id="yhK-77-Jyi"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="capitalsLabel" destination="JWI-vt-Lht" id="LlP-ZJ-dtm"/>
+                        <outlet property="currenciesLabel" destination="1Jk-0R-crc" id="A8G-Gi-Xrb"/>
                         <outlet property="flag" destination="SZy-hi-8IR" id="HYl-AI-1zI"/>
-                        <outlet property="selectedCountryLabel" destination="t4U-e6-htA" id="GMp-Nv-q5E"/>
+                        <outlet property="languagesLabel" destination="cTM-70-jaT" id="faP-wE-tT4"/>
+                        <outlet property="locationLabel" destination="YNw-M1-j0n" id="MXn-Bg-Qek"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IRb-yU-vAU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

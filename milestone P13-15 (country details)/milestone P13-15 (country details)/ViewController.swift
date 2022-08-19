@@ -44,12 +44,11 @@ class ViewController: UITableViewController {
             //send properties to detailviewcontroller
             vc.flagEmoji = selectedCountryProperties["flag"] as? String
             vc.countryNameLabelText = selectedCountryName
-            vc.selectedCountryCapitals = selectedCountryProperties["capital"]!
-            vc.selectedCountryCurrencies = selectedCountryProperties["currencies"]!
-            vc.selectedCountryLanguages = selectedCountryProperties["language"]!
-            vc.selectedCountryRegion = selectedCountryProperties["region"]!
-            vc.selectedCountrySubregion = selectedCountryProperties["subregion"]
-            vc.selectedCountryLatLng = selectedCountryProperties["latlng"]!
+            vc.selectedCountryCapitals = selectedCountryProperties["capital"] as? [String]
+            vc.selectedCountryCurrencies = selectedCountryProperties["currencies"] as? [String]
+            vc.selectedCountryLanguages = selectedCountryProperties["language"] as? [String]
+            vc.selectedCountryRegion = selectedCountryProperties["region"] as? String
+            vc.selectedCountrySubregion = selectedCountryProperties["subregion"] as? String
             
             navigationController?.pushViewController(vc, animated: true)
         }
@@ -73,8 +72,7 @@ class ViewController: UITableViewController {
                 tempCountryDict["capital"] = jsonCountries[i].capital
                 tempCountryDict["region"] = jsonCountries[i].region
                 tempCountryDict["subregion"] = jsonCountries[i].subregion
-                tempCountryDict["language"] = jsonCountries[i].languages.values
-                tempCountryDict["latlng"] = jsonCountries[i].latlng
+                tempCountryDict["language"] = Array(jsonCountries[i].languages.values)      
                 tempCountryDict["area"] = jsonCountries[i] .area
                 tempCountryDict["flag"] = jsonCountries[i].flag
                 

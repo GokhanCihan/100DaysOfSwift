@@ -15,7 +15,6 @@ struct Country: Codable {
     var region: String
     var subregion: String
     var languages: Dictionary<String, String>
-    var latlng: [Double]
     var area: Double
     var flag: String
 }

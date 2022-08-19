@@ -9,35 +9,36 @@ import UIKit
 
 class DetailViewController: UIViewController {
     @IBOutlet var flag: UILabel!
-    @IBOutlet var selectedCountryLabel: UILabel!
+    @IBOutlet var locationLabel: UILabel!
+    @IBOutlet var capitalsLabel: UILabel!
+    @IBOutlet var currenciesLabel: UILabel!
+    @IBOutlet var languagesLabel: UILabel!
+    
     var flagEmoji: String?
     var countryNameLabelText: String?
-    var selectedCountryCapitals: Any?
-    var selectedCountryCurrencies: Any?
-    var selectedCountryLanguages: Any?
-    var selectedCountryRegion: Any?
-    var selectedCountrySubregion: Any?
-    var selectedCountryLatLng: Any?
+    var selectedCountryCapitals: [String]?
+    var selectedCountryCurrencies: [String]?
+    var selectedCountryLanguages: [String]?
+    var selectedCountryRegion: String?
+    var selectedCountrySubregion: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         flag.adjustsFontSizeToFitWidth = true
         flag.text = flagEmoji
-        selectedCountryLabel.text = countryNameLabelText
-        
-        // Do any additional setup after loading the view.
-    }
+        title = countryNameLabelText
+        locationLabel.text = "\(selectedCountrySubregion!)/\(selectedCountryRegion!)"
+        capitalsLabel.text = enumerateArray(selectedCountryCapitals!)
+        currenciesLabel.text = enumerateArray(selectedCountryCurrencies!)
+        languagesLabel.text = enumerateArray(selectedCountryLanguages!)
+        }
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func enumerateArray(_ items: Array<String>) -> String {
+        var resultingString = ""
+        for item in items.enumerated() {
+            resultingString += "\(item.element)   "
+        }
+        return resultingString
     }
-    */
-
 }
+
