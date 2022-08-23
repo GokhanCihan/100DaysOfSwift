@@ -22,18 +22,44 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="gzX-8O-HSH"/>
                                 </connections>
                             </mapView>
+                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRb-eZ-aYx">
+                                <rect key="frame" x="282" y="88" width="112" height="33"/>
+                                <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" cornerStyle="capsule" titleAlignment="center">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="satellite">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="16" name="Helvetica"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                    <color key="baseBackgroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Td4-qH-8hS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="uZX-87-MR2" firstAttribute="top" secondItem="QRb-eZ-aYx" secondAttribute="bottom" constant="-121" id="6A9-FY-rwC"/>
                             <constraint firstItem="uZX-87-MR2" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="-88" id="C6U-e5-SSH"/>
                             <constraint firstItem="uZX-87-MR2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RH9-7r-Xal"/>
+                            <constraint firstItem="QRb-eZ-aYx" firstAttribute="leading" secondItem="uZX-87-MR2" secondAttribute="trailing" constant="-132" id="r08-sP-OOa"/>
                             <constraint firstItem="uZX-87-MR2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rYa-XU-esu"/>
                             <constraint firstItem="uZX-87-MR2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="tkd-QA-PcT"/>
+                            <constraint firstItem="QRb-eZ-aYx" firstAttribute="width" secondItem="uZX-87-MR2" secondAttribute="width" multiplier="0.270531" id="zS5-Fm-Xtd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Vdn-0s-ZBZ"/>
                     <connections>
+                        <outlet property="mapTypeButton" destination="QRb-eZ-aYx" id="CZF-tf-7JV"/>
                         <outlet property="mapView" destination="uZX-87-MR2" id="PZd-tV-Y9l"/>
                     </connections>
                 </viewController>
@@ -61,6 +87,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
