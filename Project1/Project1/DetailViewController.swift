@@ -18,6 +18,8 @@ class DetailViewController: UIViewController {
         // Do any additional setup after loading the view.
         // Changes title after detail view loaded
         
+        // Checks if variable has a value, prints error if it doesn't 
+        assert(selectedImage != nil, "selectedImage variable has no value!")
         
         title = imagesTitle
         navigationItem.largeTitleDisplayMode = .never
