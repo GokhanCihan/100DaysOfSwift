@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  Milestone P16-18 (shooting gallery)
+//  milestone-Space Shooter
 //
-//  Created by Gökhan on 31.08.2022.
+//  Created by Gökhan on 1.09.2022.
 //
 
 import UIKit
