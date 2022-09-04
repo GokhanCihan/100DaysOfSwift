@@ -8,7 +8,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     var player: SKSpriteNode!
     var playerSelected = false {
         didSet {
@@ -19,6 +19,8 @@ class GameScene: SKScene {
     let steampunk = ["steampunk-1", "steampunk-2", "steampunk-3"]
     
     override func didMove(to view: SKView) {
+        physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        
         let background = SKSpriteNode(imageNamed: "background")
         background.name = "background"
         background.position = CGPoint(x: 512, y: 384)
@@ -31,6 +33,8 @@ class GameScene: SKScene {
         player.size = CGSize(width: 75, height: 100)
         player.position = CGPoint(x: 512, y: 60)
         addChild(player)
+        
+        createTarget(for: 5)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -64,10 +68,36 @@ class GameScene: SKScene {
         playerSelected = false
     }
     
-    func createTargets() {
-        let ship = SKSpriteNode(imageNamed: hightech.randomElement()!)
-        ship.name = "hightech"
+    func createTarget(for targets: Int) {
+        
+        //should create 3 rows of targets
+            //different kind of target in each row
+        //targets should move
+            //opposite directions for each row
+            //different speeds for each row
+            //rows should change direction
+        
+        for target in 0...targets {
+            let ship = SKSpriteNode(imageNamed: hightech.randomElement()!)
+            ship.name = "hightech"
+            
+            //modify equations for x and y positions
+            ship.position = CGPoint(x: 200 + (624 / (targets + 1) + (100 / 5)) * target, y: 384)
+            ship.size = CGSize(width: 60, height: 40)
+            addChild(ship)
+            
+            ship.physicsBody = SKPhysicsBody(texture: ship.texture!, size: ship.size)
+            ship.physicsBody?.contactTestBitMask = 1
+            
+            ship.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        }
         
     }
 
+    //player should fire projectiles
+        //when projectiles come to contact with targets
+            //destroy target
+            //destroy projectile
+            //get points or lose
+    
 }
