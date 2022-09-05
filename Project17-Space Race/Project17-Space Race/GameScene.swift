@@ -100,5 +100,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         isGameOver = true
     }
+    
 }
 

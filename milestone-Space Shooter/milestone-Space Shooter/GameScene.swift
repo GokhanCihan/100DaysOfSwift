@@ -15,26 +15,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print(playerSelected)
         }
     }
-    let hightech = ["hightech-1", "hightech-2", "hightech-3"]
-    let steampunk = ["steampunk-1", "steampunk-2", "steampunk-3"]
+    let ships = ["hightech-1", "hightech-2", "hightech-3", "steampunk-1", "steampunk-2", "steampunk-3"]
     
     override func didMove(to view: SKView) {
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         
         let background = SKSpriteNode(imageNamed: "background")
         background.name = "background"
-        background.position = CGPoint(x: 512, y: 384)
+        background.size = CGSize(width: 1366, height: 1024)
+        background.position = CGPoint(x: 683, y: 512)
         background.zPosition = -1
         background.blendMode = .replace
         addChild(background)
         
         player = SKSpriteNode(imageNamed: "good")
         player.name = "player"
-        player.size = CGSize(width: 75, height: 100)
-        player.position = CGPoint(x: 512, y: 60)
+        player.size = CGSize(width: 75, height: 125)
+        player.position = CGPoint(x: 683, y: 60)
         addChild(player)
         
-        createTarget(for: 5)
+        createTargets()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -68,28 +68,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         playerSelected = false
     }
     
-    func createTarget(for targets: Int) {
-        
-        //should create 3 rows of targets
-            //different kind of target in each row
+    func createTargets() {
         //targets should move
-            //opposite directions for each row
             //different speeds for each row
             //rows should change direction
-        
-        for target in 0...targets {
-            let ship = SKSpriteNode(imageNamed: hightech.randomElement()!)
-            ship.name = "hightech"
-            
-            //modify equations for x and y positions
-            ship.position = CGPoint(x: 200 + (624 / (targets + 1) + (100 / 5)) * target, y: 384)
-            ship.size = CGSize(width: 60, height: 40)
-            addChild(ship)
-            
-            ship.physicsBody = SKPhysicsBody(texture: ship.texture!, size: ship.size)
-            ship.physicsBody?.contactTestBitMask = 1
-            
-            ship.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        var velocityDirection = 1
+        let screenWidth = UIScreen.main.bounds.width
+        let rowsDistanceFromEdge = Int((screenWidth * 0.15).rounded())
+
+        for row in 0..<4 {
+            let numberOfTargets = Int.random(in: 5...7)
+            let distanceBetweenTargets = (Int(screenWidth) - 2 * rowsDistanceFromEdge) / (numberOfTargets - 1)
+            velocityDirection *= -1
+            for target in 0..<numberOfTargets {
+                let ship = SKSpriteNode(imageNamed: ships.randomElement()!)
+                ship.name = "hightech"
+                            
+                ship.position = CGPoint(x: rowsDistanceFromEdge + (target) * distanceBetweenTargets, y: (row * 150) + 486)
+                ship.size = CGSize(width: 60, height: 40)
+                addChild(ship)
+                            
+                ship.physicsBody = SKPhysicsBody(texture: ship.texture!, size: ship.size)
+                ship.physicsBody?.contactTestBitMask = 1
+                ship.physicsBody?.velocity = CGVector(dx: 25 * velocityDirection, dy: 0)
+            }
         }
         
     }
@@ -99,5 +101,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //destroy target
             //destroy projectile
             //get points or lose
-    
+    //set timer
 }
