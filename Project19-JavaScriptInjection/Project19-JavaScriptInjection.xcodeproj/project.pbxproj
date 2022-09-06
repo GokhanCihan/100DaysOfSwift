@@ -7,15 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		76D3E10C28C7C6220052EBD1 /* Action.js in Resources */ = {isa = PBXBuildFile; fileRef = 76D3E10B28C7C6220052EBD1 /* Action.js */; };
 		76E7C99F28C7B9D300161949 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E7C99E28C7B9D300161949 /* AppDelegate.swift */; };
 		76E7C9A128C7B9D300161949 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E7C9A028C7B9D300161949 /* SceneDelegate.swift */; };
 		76E7C9A328C7B9D300161949 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E7C9A228C7B9D300161949 /* ViewController.swift */; };
 		76E7C9A628C7B9D300161949 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76E7C9A428C7B9D300161949 /* Main.storyboard */; };
 		76E7C9A828C7B9D400161949 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76E7C9A728C7B9D400161949 /* Assets.xcassets */; };
 		76E7C9AB28C7B9D400161949 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76E7C9A928C7B9D400161949 /* LaunchScreen.storyboard */; };
+		76E7C9B928C7BBE900161949 /* UniformTypeIdentifiers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E7C9B828C7BBE900161949 /* UniformTypeIdentifiers.framework */; };
+		76E7C9BC28C7BBE900161949 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76E7C9BB28C7BBE900161949 /* Media.xcassets */; };
+		76E7C9BE28C7BBE900161949 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E7C9BD28C7BBE900161949 /* ActionViewController.swift */; };
+		76E7C9C128C7BBE900161949 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76E7C9BF28C7BBE900161949 /* MainInterface.storyboard */; };
+		76E7C9C528C7BBE900161949 /* Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 76E7C9B628C7BBE900161949 /* Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		76E7C9C328C7BBE900161949 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 76E7C99328C7B9D300161949 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 76E7C9B528C7BBE900161949;
+			remoteInfo = Extension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		76E7C9C928C7BBE900161949 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				76E7C9C528C7BBE900161949 /* Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		76D3E10B28C7C6220052EBD1 /* Action.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Action.js; sourceTree = "<group>"; };
 		76E7C99B28C7B9D300161949 /* Project19-JavaScriptInjection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project19-JavaScriptInjection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76E7C99E28C7B9D300161949 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76E7C9A028C7B9D300161949 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +55,12 @@
 		76E7C9A728C7B9D400161949 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		76E7C9AA28C7B9D400161949 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		76E7C9AC28C7B9D400161949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76E7C9B628C7BBE900161949 /* Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Extension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		76E7C9B828C7BBE900161949 /* UniformTypeIdentifiers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UniformTypeIdentifiers.framework; path = System/Library/Frameworks/UniformTypeIdentifiers.framework; sourceTree = SDKROOT; };
+		76E7C9BB28C7BBE900161949 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		76E7C9BD28C7BBE900161949 /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		76E7C9C028C7BBE900161949 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		76E7C9C228C7BBE900161949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +71,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		76E7C9B328C7BBE900161949 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76E7C9B928C7BBE900161949 /* UniformTypeIdentifiers.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -41,6 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				76E7C99D28C7B9D300161949 /* Project19-JavaScriptInjection */,
+				76E7C9BA28C7BBE900161949 /* Extension */,
+				76E7C9B728C7BBE900161949 /* Frameworks */,
 				76E7C99C28C7B9D300161949 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				76E7C99B28C7B9D300161949 /* Project19-JavaScriptInjection.app */,
+				76E7C9B628C7BBE900161949 /* Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,6 +115,26 @@
 			path = "Project19-JavaScriptInjection";
 			sourceTree = "<group>";
 		};
+		76E7C9B728C7BBE900161949 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				76E7C9B828C7BBE900161949 /* UniformTypeIdentifiers.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		76E7C9BA28C7BBE900161949 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				76E7C9BB28C7BBE900161949 /* Media.xcassets */,
+				76E7C9BD28C7BBE900161949 /* ActionViewController.swift */,
+				76E7C9BF28C7BBE900161949 /* MainInterface.storyboard */,
+				76E7C9C228C7BBE900161949 /* Info.plist */,
+				76D3E10B28C7C6220052EBD1 /* Action.js */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,15 +145,34 @@
 				76E7C99728C7B9D300161949 /* Sources */,
 				76E7C99828C7B9D300161949 /* Frameworks */,
 				76E7C99928C7B9D300161949 /* Resources */,
+				76E7C9C928C7BBE900161949 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				76E7C9C428C7BBE900161949 /* PBXTargetDependency */,
 			);
 			name = "Project19-JavaScriptInjection";
 			productName = "Project19-JavaScriptInjection";
 			productReference = 76E7C99B28C7B9D300161949 /* Project19-JavaScriptInjection.app */;
 			productType = "com.apple.product-type.application";
+		};
+		76E7C9B528C7BBE900161949 /* Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76E7C9C628C7BBE900161949 /* Build configuration list for PBXNativeTarget "Extension" */;
+			buildPhases = (
+				76E7C9B228C7BBE900161949 /* Sources */,
+				76E7C9B328C7BBE900161949 /* Frameworks */,
+				76E7C9B428C7BBE900161949 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Extension;
+			productName = Extension;
+			productReference = 76E7C9B628C7BBE900161949 /* Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -98,6 +185,9 @@
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					76E7C99A28C7B9D300161949 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					76E7C9B528C7BBE900161949 = {
 						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
@@ -116,6 +206,7 @@
 			projectRoot = "";
 			targets = (
 				76E7C99A28C7B9D300161949 /* Project19-JavaScriptInjection */,
+				76E7C9B528C7BBE900161949 /* Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -128,6 +219,16 @@
 				76E7C9AB28C7B9D400161949 /* LaunchScreen.storyboard in Resources */,
 				76E7C9A828C7B9D400161949 /* Assets.xcassets in Resources */,
 				76E7C9A628C7B9D300161949 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76E7C9B428C7BBE900161949 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76D3E10C28C7C6220052EBD1 /* Action.js in Resources */,
+				76E7C9BC28C7BBE900161949 /* Media.xcassets in Resources */,
+				76E7C9C128C7BBE900161949 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +245,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		76E7C9B228C7BBE900161949 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76E7C9BE28C7BBE900161949 /* ActionViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		76E7C9C428C7BBE900161949 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 76E7C9B528C7BBE900161949 /* Extension */;
+			targetProxy = 76E7C9C328C7BBE900161949 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		76E7C9A428C7B9D300161949 /* Main.storyboard */ = {
@@ -161,6 +278,14 @@
 				76E7C9AA28C7B9D400161949 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		76E7C9BF28C7BBE900161949 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				76E7C9C028C7BBE900161949 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -283,6 +408,7 @@
 		76E7C9B028C7B9D400161949 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -311,6 +437,7 @@
 		76E7C9B128C7B9D400161949 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -336,6 +463,56 @@
 			};
 			name = Release;
 		};
+		76E7C9C728C7BBE900161949 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 89L9PSZ495;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Extension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Extension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Project19-JavaScriptInjection.Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		76E7C9C828C7BBE900161949 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 89L9PSZ495;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Extension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Extension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Project19-JavaScriptInjection.Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -353,6 +530,15 @@
 			buildConfigurations = (
 				76E7C9B028C7B9D400161949 /* Debug */,
 				76E7C9B128C7B9D400161949 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		76E7C9C628C7BBE900161949 /* Build configuration list for PBXNativeTarget "Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76E7C9C728C7BBE900161949 /* Debug */,
+				76E7C9C828C7BBE900161949 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
