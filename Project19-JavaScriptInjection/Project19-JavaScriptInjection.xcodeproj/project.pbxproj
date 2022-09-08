@@ -14,7 +14,6 @@
 		76E7C9A628C7B9D300161949 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76E7C9A428C7B9D300161949 /* Main.storyboard */; };
 		76E7C9A828C7B9D400161949 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76E7C9A728C7B9D400161949 /* Assets.xcassets */; };
 		76E7C9AB28C7B9D400161949 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76E7C9A928C7B9D400161949 /* LaunchScreen.storyboard */; };
-		76E7C9B928C7BBE900161949 /* UniformTypeIdentifiers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76E7C9B828C7BBE900161949 /* UniformTypeIdentifiers.framework */; };
 		76E7C9BC28C7BBE900161949 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76E7C9BB28C7BBE900161949 /* Media.xcassets */; };
 		76E7C9BE28C7BBE900161949 /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E7C9BD28C7BBE900161949 /* ActionViewController.swift */; };
 		76E7C9C128C7BBE900161949 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76E7C9BF28C7BBE900161949 /* MainInterface.storyboard */; };
@@ -56,7 +55,6 @@
 		76E7C9AA28C7B9D400161949 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		76E7C9AC28C7B9D400161949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76E7C9B628C7BBE900161949 /* Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Extension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		76E7C9B828C7BBE900161949 /* UniformTypeIdentifiers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UniformTypeIdentifiers.framework; path = System/Library/Frameworks/UniformTypeIdentifiers.framework; sourceTree = SDKROOT; };
 		76E7C9BB28C7BBE900161949 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		76E7C9BD28C7BBE900161949 /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		76E7C9C028C7BBE900161949 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -75,7 +73,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76E7C9B928C7BBE900161949 /* UniformTypeIdentifiers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,7 +84,6 @@
 			children = (
 				76E7C99D28C7B9D300161949 /* Project19-JavaScriptInjection */,
 				76E7C9BA28C7BBE900161949 /* Extension */,
-				76E7C9B728C7BBE900161949 /* Frameworks */,
 				76E7C99C28C7B9D300161949 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -113,14 +109,6 @@
 				76E7C9AC28C7B9D400161949 /* Info.plist */,
 			);
 			path = "Project19-JavaScriptInjection";
-			sourceTree = "<group>";
-		};
-		76E7C9B728C7BBE900161949 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				76E7C9B828C7BBE900161949 /* UniformTypeIdentifiers.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		76E7C9BA28C7BBE900161949 /* Extension */ = {

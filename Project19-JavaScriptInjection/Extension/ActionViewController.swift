@@ -40,11 +40,11 @@ class ActionViewController: UIViewController {
     
     @IBAction func done() {
         //send back data to Safari, and it will appear inside the finalize() function in Action.js
-       let item = NSExtensionItem() //hosts our items
+        let item = NSExtensionItem() //hosts our items
         let argument: NSDictionary = ["customJavaScript": script.text!]
         
         let webDictionary: NSDictionary = [NSExtensionJavaScriptFinalizeArgumentKey: argument]
-        let customJavaScript = NSItemProvider(item: webDictionary, typeIdentifier: kUTTypeIdentifierKey as String)
+        let customJavaScript = NSItemProvider(item: webDictionary, typeIdentifier: kUTTypePropertyList as String)
         item.attachments = [customJavaScript]
         
         print("\n \n \n \n \n \([item])")
