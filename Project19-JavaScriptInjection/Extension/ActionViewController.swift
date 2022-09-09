@@ -9,6 +9,7 @@ import UIKit
 import MobileCoreServices
 import UniformTypeIdentifiers
 
+/// calls actionView when extension is choosen
 class ActionViewController: UIViewController {
     @IBOutlet var script: UITextView!
     var pageTitle = ""
@@ -23,8 +24,12 @@ class ActionViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
         
+        //runs typed script
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
-    
+        
+        //runs choosen script
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(listScripts))
+        
         if let inputItem = extensionContext?.inputItems.first as? NSExtensionItem {
                if let itemProvider = inputItem.attachments?.first {
                    itemProvider.loadItem(forTypeIdentifier: kUTTypePropertyList as String) { [weak self] (dict, error) in
@@ -52,7 +57,6 @@ class ActionViewController: UIViewController {
         let customJavaScript = NSItemProvider(item: webDictionary, typeIdentifier: kUTTypePropertyList as String)
         item.attachments = [customJavaScript]
         
-        print("\n \n \n \n \n \([item])")
         extensionContext?.completeRequest(returningItems: [item])
     }
 
@@ -77,5 +81,23 @@ class ActionViewController: UIViewController {
         
         let selectedRange = script.selectedRange
         script.scrollRangeToVisible(selectedRange)
+    }
+    
+    @objc func listScripts() {
+        let ac = UIAlertController(title: "Choose script", message: nil, preferredStyle: .alert)
+        
+        ac.addAction(UIAlertAction(title: "alert page title", style: .default) { _ in
+            self.script.text! = "alert(document.title);"
+            self.done()
+        })
+        
+        ac.addAction(UIAlertAction(title: "alert page URL", style: .default) { _ in
+            self.script.text! = "alert(document.title);"
+            self.done()
+        })
+        
+        ac.addAction(UIAlertAction(title: "create new script", style: .cancel))
+        
+        present(ac, animated: true)
     }
 }
