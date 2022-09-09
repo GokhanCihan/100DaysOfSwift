@@ -18,6 +18,11 @@ class ActionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let notificationCenter = NotificationCenter.default
+        //observer calls provided selector which takes specified notification as parameter from NSNotificationCenter
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
     
         if let inputItem = extensionContext?.inputItems.first as? NSExtensionItem {
@@ -51,4 +56,26 @@ class ActionViewController: UIViewController {
         extensionContext?.completeRequest(returningItems: [item])
     }
 
+    @objc func adjustForKeyboard(notification: Notification) {
+        //Recieved function parameter is of type Notification
+        
+        //since arrays and dictionaries in Obj.-C can not contain CGRect it is stored as NSValue
+        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        
+        //cgRectValue used to read NSValue as a CGRect object
+        let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        //convert() flips CGRect object's frame width and height so that rotating the device would not cause any problem
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        
+        if notification.name == UIResponder.keyboardWillHideNotification {
+                script.contentInset = .zero
+            } else {
+                script.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
+            }
+        
+        script.scrollIndicatorInsets = script.contentInset
+        
+        let selectedRange = script.selectedRange
+        script.scrollRangeToVisible(selectedRange)
+    }
 }
