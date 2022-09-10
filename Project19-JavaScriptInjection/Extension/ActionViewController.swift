@@ -9,49 +9,73 @@ import UIKit
 import MobileCoreServices
 import UniformTypeIdentifiers
 
-/// calls actionView when extension is choosen
-class ActionViewController: UIViewController {
-    @IBOutlet var script: UITextView!
+// calls actionView when extension is choosen
+class ActionViewController: UITableViewController {
+    var savedScripts = [Script]()
     var pageTitle = ""
     var pageURL = ""
-    
+    var scriptToInject: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Run Script to"
         
-        let notificationCenter = NotificationCenter.default
-        //observer calls provided selector which takes specified notification as parameter from NSNotificationCenter
-        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardDidChangeFrameNotification, object: nil)
+        //default scripts
+        if savedScripts.count == 0 {
+            var titleScript = Script()
+            var URLScript = Script()
+            
+            titleScript.action = "alert site title"
+            titleScript.text = "alert(document.title);"
+            URLScript.action = "alert site URL"
+            URLScript.text = "alert(document.URL);"
+            
+            savedScripts.append(titleScript)
+            savedScripts.append(URLScript)
+        }
         
         //runs typed script
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
         
         //runs choosen script
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(listScripts))
-        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createScript))
+
+        //pulls information from website JS
         if let inputItem = extensionContext?.inputItems.first as? NSExtensionItem {
-               if let itemProvider = inputItem.attachments?.first {
-                   itemProvider.loadItem(forTypeIdentifier: kUTTypePropertyList as String) { [weak self] (dict, error) in
-                       guard let itemDictionary = dict as? NSDictionary else { return }
-                       guard let javaScriptValues = itemDictionary[NSExtensionJavaScriptPreprocessingResultsKey] as? NSDictionary else { return }
+            if let itemProvider = inputItem.attachments?.first {
+                itemProvider.loadItem(forTypeIdentifier: kUTTypePropertyList as String) { [weak self] (dict, error) in
+                    guard let itemDictionary = dict as? NSDictionary else { return }
+                    guard let javaScriptValues = itemDictionary[NSExtensionJavaScriptPreprocessingResultsKey] as? NSDictionary else { return }
                        
-                       self?.pageTitle = javaScriptValues["title"] as? String ?? ""
-                       self?.pageURL = javaScriptValues["URL"] as? String ?? ""
-                       
-                       DispatchQueue.main.async {
-                           self?.title = self?.pageTitle
-                       }
-                   }
-               }
-           }
+                    self?.pageTitle = javaScriptValues["title"] as? String ?? ""
+                    self?.pageURL = javaScriptValues["URL"] as? String ?? ""
+            
+                }
+            }
+        }
+        
     }
 
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return savedScripts.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ScriptCell", for: indexPath)
+        let script = savedScripts[indexPath.row]
+        cell.textLabel?.text = script.action
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        scriptToInject = savedScripts[indexPath.row].text
+        done()
+    }
     
     @IBAction func done() {
         //send back data to Safari, and it will appear inside the finalize() function in Action.js
         let item = NSExtensionItem() //hosts our items
-        let argument: NSDictionary = ["customJavaScript": script.text!]
+        let argument: NSDictionary = ["customJavaScript": scriptToInject!]
         
         let webDictionary: NSDictionary = [NSExtensionJavaScriptFinalizeArgumentKey: argument]
         let customJavaScript = NSItemProvider(item: webDictionary, typeIdentifier: kUTTypePropertyList as String)
@@ -59,45 +83,10 @@ class ActionViewController: UIViewController {
         
         extensionContext?.completeRequest(returningItems: [item])
     }
-
-    @objc func adjustForKeyboard(notification: Notification) {
-        //Recieved function parameter is of type Notification
-        
-        //since arrays and dictionaries in Obj.-C can not contain CGRect it is stored as NSValue
-        guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
-        
-        //cgRectValue used to read NSValue as a CGRect object
-        let keyboardScreenEndFrame = keyboardValue.cgRectValue
-        //convert() flips CGRect object's frame width and height so that rotating the device would not cause any problem
-        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
-        
-        if notification.name == UIResponder.keyboardWillHideNotification {
-                script.contentInset = .zero
-            } else {
-                script.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom, right: 0)
-            }
-        
-        script.scrollIndicatorInsets = script.contentInset
-        
-        let selectedRange = script.selectedRange
-        script.scrollRangeToVisible(selectedRange)
-    }
     
-    @objc func listScripts() {
-        let ac = UIAlertController(title: "Choose script", message: nil, preferredStyle: .alert)
-        
-        ac.addAction(UIAlertAction(title: "alert page title", style: .default) { _ in
-            self.script.text! = "alert(document.title);"
-            self.done()
-        })
-        
-        ac.addAction(UIAlertAction(title: "alert page URL", style: .default) { _ in
-            self.script.text! = "alert(document.title);"
-            self.done()
-        })
-        
-        ac.addAction(UIAlertAction(title: "create new script", style: .cancel))
-        
-        present(ac, animated: true)
+    @objc func createScript() {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }

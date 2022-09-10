@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		76B076C928CBC0E800CC9F89 /* Script.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B076C828CBC0E800CC9F89 /* Script.swift */; };
+		76B076CB28CBCB1E00CC9F89 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B076CA28CBCB1E00CC9F89 /* DetailViewController.swift */; };
 		76D3E10C28C7C6220052EBD1 /* Action.js in Resources */ = {isa = PBXBuildFile; fileRef = 76D3E10B28C7C6220052EBD1 /* Action.js */; };
 		76E7C99F28C7B9D300161949 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E7C99E28C7B9D300161949 /* AppDelegate.swift */; };
 		76E7C9A128C7B9D300161949 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E7C9A028C7B9D300161949 /* SceneDelegate.swift */; };
@@ -45,6 +47,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		76B076C828CBC0E800CC9F89 /* Script.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Script.swift; sourceTree = "<group>"; };
+		76B076CA28CBCB1E00CC9F89 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		76D3E10B28C7C6220052EBD1 /* Action.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Action.js; sourceTree = "<group>"; };
 		76E7C99B28C7B9D300161949 /* Project19-JavaScriptInjection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project19-JavaScriptInjection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76E7C99E28C7B9D300161949 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,7 +120,9 @@
 			children = (
 				76E7C9BB28C7BBE900161949 /* Media.xcassets */,
 				76E7C9BD28C7BBE900161949 /* ActionViewController.swift */,
+				76B076C828CBC0E800CC9F89 /* Script.swift */,
 				76E7C9BF28C7BBE900161949 /* MainInterface.storyboard */,
+				76B076CA28CBCB1E00CC9F89 /* DetailViewController.swift */,
 				76E7C9C228C7BBE900161949 /* Info.plist */,
 				76D3E10B28C7C6220052EBD1 /* Action.js */,
 			);
@@ -237,6 +243,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76B076CB28CBCB1E00CC9F89 /* DetailViewController.swift in Sources */,
+				76B076C928CBC0E800CC9F89 /* Script.swift in Sources */,
 				76E7C9BE28C7BBE900161949 /* ActionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
