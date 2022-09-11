@@ -2,12 +2,17 @@
 //  Script.swift
 //  Extension
 //
-//  Created by Gökhan on 9.09.2022.
+//  Created by Gökhan on 10.09.2022.
 //
 
-import Foundation
+import UIKit
 
-struct Script {
-    var action: String!
-    var text: String!
+class Script: NSObject, Codable {
+    var scriptName: String
+    var scriptText: String
+    
+    init(scriptName: String, scriptText: String) {
+        self.scriptName = scriptName
+        self.scriptText = scriptText
+    }
 }

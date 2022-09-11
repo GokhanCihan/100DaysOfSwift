@@ -18,27 +18,23 @@ class ActionViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Run Script to"
+        self.title = "Saved Scripts"
+        navigationItem.largeTitleDisplayMode = .never
+        
+        loadData()
         
         //default scripts
         if savedScripts.count == 0 {
-            var titleScript = Script()
-            var URLScript = Script()
-            
-            titleScript.action = "alert site title"
-            titleScript.text = "alert(document.title);"
-            URLScript.action = "alert site URL"
-            URLScript.text = "alert(document.URL);"
+            let titleScript = Script(scriptName: "alert page title", scriptText: "alert(document.title);")
+            let URLScript = Script(scriptName: "alert page URL", scriptText: "alert(document.URL);")
             
             savedScripts.append(titleScript)
             savedScripts.append(URLScript)
+            saveData()
         }
         
-        //runs typed script
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
-        
         //runs choosen script
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createScript))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addScript))
 
         //pulls information from website JS
         if let inputItem = extensionContext?.inputItems.first as? NSExtensionItem {
@@ -53,7 +49,11 @@ class ActionViewController: UITableViewController {
                 }
             }
         }
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadData()
+        tableView.reloadData()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,12 +63,12 @@ class ActionViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScriptCell", for: indexPath)
         let script = savedScripts[indexPath.row]
-        cell.textLabel?.text = script.action
+        cell.textLabel?.text = script.scriptName
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        scriptToInject = savedScripts[indexPath.row].text
+        scriptToInject = savedScripts[indexPath.row].scriptText
         done()
     }
     
@@ -84,9 +84,33 @@ class ActionViewController: UITableViewController {
         extensionContext?.completeRequest(returningItems: [item])
     }
     
-    @objc func createScript() {
+    @objc func addScript() {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            vc.savedScripts = savedScripts
             navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func loadData() {
+        let defaults = UserDefaults.standard
+        
+        if let savedData = defaults.object(forKey: "savedScripts") as? Data {
+            let jsonDecoder = JSONDecoder()
+            
+            do {
+                savedScripts = try jsonDecoder.decode([Script].self, from: savedData)
+            } catch {
+                print("failed to load data")
+            }
+        }
+    }
+    
+    func saveData() {
+        let jsonEncoder = JSONEncoder()
+        
+        if let saveData = try? jsonEncoder.encode(savedScripts) as Data {
+            let defaults = UserDefaults.standard
+            defaults.set(saveData, forKey: "savedscripts")
         }
     }
 }

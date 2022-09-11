@@ -9,11 +9,14 @@ import UIKit
 
 class DetailViewController: UIViewController {
     @IBOutlet var customScript: UITextView!
+    var savedScripts = [Script]()
     
-    var createdScriptToSendToDoneFunction: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "New Script"
+        navigationItem.largeTitleDisplayMode = .never
+        
         
         let notificationCenter = NotificationCenter.default
         
@@ -25,6 +28,22 @@ class DetailViewController: UIViewController {
 
     }
     
+    @objc func saveScript() {
+        let ac = UIAlertController(title: "Name this script:", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+        
+        ac.addAction(UIAlertAction(title: "OK", style: .default) { [weak ac, weak self] _ in
+            guard let createdName = ac?.textFields?[0].text else { return }
+            let createdScript = (self?.customScript.text)!
+            
+            let script = Script(scriptName: createdName, scriptText: createdScript)
+    
+            self?.savedScripts.append(script)
+            self?.saveData()
+        })
+        present(ac, animated: true)
+    }
+    
     @objc func adjustForKeyboard(notification: Notification) {
         //Recieved function parameter is of type Notification
     
@@ -33,6 +52,7 @@ class DetailViewController: UIViewController {
     
         //cgRectValue used to read NSValue as a CGRect object
         let keyboardScreenEndFrame = keyboardValue.cgRectValue
+        
         //convert() flips CGRect object's frame width and height so that rotating the device would not cause any problem
         let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
     
@@ -48,9 +68,12 @@ class DetailViewController: UIViewController {
         customScript.scrollRangeToVisible(selectedRange)
     }
     
-    @objc func saveScript() {
-        createdScriptToSendToDoneFunction = customScript.text
+    func saveData() {
+        let jsonEncoder = JSONEncoder()
         
+        if let saveData = try? jsonEncoder.encode(savedScripts) as Data {
+            let defaults = UserDefaults.standard
+            defaults.set(saveData, forKey: "savedScripts")
+        }
     }
-
 }
