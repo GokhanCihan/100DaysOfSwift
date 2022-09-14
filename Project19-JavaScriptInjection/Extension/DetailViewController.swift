@@ -17,6 +17,7 @@ class DetailViewController: UIViewController {
         title = "New Script"
         navigationItem.largeTitleDisplayMode = .never
         
+        loadData()
         
         let notificationCenter = NotificationCenter.default
         
@@ -34,10 +35,10 @@ class DetailViewController: UIViewController {
         
         ac.addAction(UIAlertAction(title: "OK", style: .default) { [weak ac, weak self] _ in
             guard let createdName = ac?.textFields?[0].text else { return }
-            let createdScript = (self?.customScript.text)!
             
-            let script = Script(scriptName: createdName, scriptText: createdScript)
+            let script = Script(scriptName: createdName, scriptText: (self?.customScript.text)!)
     
+            print((self?.customScript.text)!)
             self?.savedScripts.append(script)
             self?.saveData()
         })
@@ -66,6 +67,20 @@ class DetailViewController: UIViewController {
     
         let selectedRange = customScript.selectedRange
         customScript.scrollRangeToVisible(selectedRange)
+    }
+    
+    func loadData() {
+        let defaults = UserDefaults.standard
+        
+        if let savedData = defaults.object(forKey: "savedScripts") as? Data {
+            let jsonDecoder = JSONDecoder()
+            
+            do {
+                savedScripts = try jsonDecoder.decode([Script].self, from: savedData)
+            } catch {
+                print("failed to load data")
+            }
+        }
     }
     
     func saveData() {

@@ -27,9 +27,12 @@ class ActionViewController: UITableViewController {
         if savedScripts.count == 0 {
             let titleScript = Script(scriptName: "alert page title", scriptText: "alert(document.title);")
             let URLScript = Script(scriptName: "alert page URL", scriptText: "alert(document.URL);")
+            let helloScript = Script(scriptName: "say hi", scriptText: "alert('hello');")
+            
             
             savedScripts.append(titleScript)
             savedScripts.append(URLScript)
+            savedScripts.append(helloScript)
             saveData()
         }
         
@@ -69,11 +72,13 @@ class ActionViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         scriptToInject = savedScripts[indexPath.row].scriptText
+        
         done()
     }
     
+    
+    //send back data to Safari, and it will appear inside the finalize() function in Action.js
     @IBAction func done() {
-        //send back data to Safari, and it will appear inside the finalize() function in Action.js
         let item = NSExtensionItem() //hosts our items
         let argument: NSDictionary = ["customJavaScript": scriptToInject!]
         
@@ -84,13 +89,16 @@ class ActionViewController: UITableViewController {
         extensionContext?.completeRequest(returningItems: [item])
     }
     
+    //called after tapping + button, loads detailview
     @objc func addScript() {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-            vc.savedScripts = savedScripts
             navigationController?.pushViewController(vc, animated: true)
         }
     }
     
+    
+    
+    //userdefaults
     func loadData() {
         let defaults = UserDefaults.standard
         
@@ -104,13 +112,12 @@ class ActionViewController: UITableViewController {
             }
         }
     }
-    
     func saveData() {
         let jsonEncoder = JSONEncoder()
         
         if let saveData = try? jsonEncoder.encode(savedScripts) as Data {
             let defaults = UserDefaults.standard
-            defaults.set(saveData, forKey: "savedscripts")
+            defaults.set(saveData, forKey: "savedScripts")
         }
     }
 }
