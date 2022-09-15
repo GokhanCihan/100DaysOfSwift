@@ -119,6 +119,45 @@ class GameScene: SKScene {
         }
     }
     
+    func explode(firework: SKNode) {
+        if let emitter = SKEmitterNode(fileNamed: "explode") {
+            emitter.position = firework.position
+            addChild(emitter)
+        }
+
+        firework.removeFromParent()
+    }
+    
+    func explodeFireworks() {
+        var numExploded = 0
+
+        for (index, fireworkContainer) in fireworks.enumerated().reversed() {
+            guard let firework = fireworkContainer.children.first as? SKSpriteNode else { continue }
+
+            if firework.name == "selected" {
+                // destroy this firework!
+                explode(firework: fireworkContainer)
+                fireworks.remove(at: index)
+                numExploded += 1
+            }
+        }
+
+        switch numExploded {
+        case 0:
+            break
+        case 1:
+            score += 200
+        case 2:
+            score += 500
+        case 3:
+            score += 1500
+        case 4:
+            score += 2500
+        default:
+            score += 4000
+        }
+    }
+    
     func checkTouches(_ touches: Set<UITouch>) {
         guard let touch = touches.first else { return }
 
@@ -160,6 +199,5 @@ class GameScene: SKScene {
             }
         }
     }
-
 
 }
