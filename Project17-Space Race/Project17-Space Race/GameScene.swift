@@ -24,7 +24,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         backgroundColor = .black
-        gameTimer = Timer.scheduledTimer(timeInterval: 0.35, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
+        gameTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(createEnemy), userInfo: nil, repeats: true)
         
         starfield = SKEmitterNode(fileNamed: "starfield")!
         starfield.position = CGPoint(x: 1024, y: 384)
@@ -39,7 +39,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(player)
 
         scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
-        scoreLabel.position = CGPoint(x: 16, y: 16)
+        scoreLabel.position = CGPoint(x: 16, y: 36)
         scoreLabel.horizontalAlignmentMode = .left
         addChild(scoreLabel)
 
