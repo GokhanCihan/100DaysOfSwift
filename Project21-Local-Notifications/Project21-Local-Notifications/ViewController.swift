@@ -19,7 +19,6 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
 
     @objc func register() {
         let center = UNUserNotificationCenter.current()
-        center.removeAllPendingNotificationRequests()
         
         center.requestAuthorization(options: [.alert, .badge, .sound]) { (granted, error) in
             if granted {
@@ -41,14 +40,12 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         let content = UNMutableNotificationContent()
         content.title = "Content's Title"
         content.body = "Content's Body"
-        content.categoryIdentifier = "customIdentifier"
+        
+        //should be the same string with identifier of UNNotificationCategory in registerCategories()
+        content.categoryIdentifier = "alarm"
         content.userInfo = ["customData": "asdmadsfjks"]
         content.sound = UNNotificationSound.default
-        
-        //Notification Trigger
-        var dateComponents = DateComponents()
-        dateComponents.hour = 22
-        dateComponents.minute = 45
+    
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
@@ -76,11 +73,17 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
             switch response.actionIdentifier {
             case UNNotificationDefaultActionIdentifier:
                 // the user swiped to unlock
-                print("Default identifier")
+                let ac = UIAlertController(title: "Custom Data", message: "\(customData)", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .cancel))
+                
+                present(ac, animated: true)
 
             case "show":
                 // the user tapped our "show more info…" button
-                print("Show more information…")
+                let ac = UIAlertController(title: "More Information", message: "Displaying more information...", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .cancel))
+                
+                present(ac, animated: true)
 
             default:
                 break
