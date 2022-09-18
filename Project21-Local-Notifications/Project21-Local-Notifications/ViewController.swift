@@ -9,6 +9,8 @@ import UIKit
 import UserNotifications
 
 class ViewController: UIViewController, UNUserNotificationCenterDelegate {
+    var timeIntervalForTrigger = Int()
+    var content = UNMutableNotificationContent()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +39,6 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         center.removeAllPendingNotificationRequests()
         
         //Notification Content
-        let content = UNMutableNotificationContent()
         content.title = "Content's Title"
         content.body = "Content's Body"
         
@@ -45,9 +46,9 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         content.categoryIdentifier = "alarm"
         content.userInfo = ["customData": "asdmadsfjks"]
         content.sound = UNNotificationSound.default
-    
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         
         center.add(request)
@@ -56,14 +57,18 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
     func registerCategories() {
         let center = UNUserNotificationCenter.current()
         center.delegate = self
-
+        
+        //multiple UNNotificationActions can be created for one category
         let show = UNNotificationAction(identifier: "show", title: "Tell me more…", options: .foreground)
-        let category = UNNotificationCategory(identifier: "alarm", actions: [show], intentIdentifiers: [])
+        let reminder = UNNotificationAction(identifier:"reminder" , title: "Remind me later", options: .foreground)
+        let category = UNNotificationCategory(identifier: "alarm", actions: [show, reminder], intentIdentifiers: [])
 
         center.setNotificationCategories([category])
+        
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
         // pull out the buried userInfo dictionary
         let userInfo = response.notification.request.content.userInfo
 
@@ -84,6 +89,12 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
                 ac.addAction(UIAlertAction(title: "OK", style: .cancel))
                 
                 present(ac, animated: true)
+                
+            case "reminder":
+                let triggerTomorrow = UNTimeIntervalNotificationTrigger(timeInterval: 86400, repeats: false)
+                let requestTomorrow = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: triggerTomorrow)
+                
+                center.add(requestTomorrow)
 
             default:
                 break
