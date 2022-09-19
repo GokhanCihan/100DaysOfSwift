@@ -13,6 +13,8 @@
 		761D156328D8E1F6003A0640 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 761D156128D8E1F6003A0640 /* Main.storyboard */; };
 		761D156528D8E1F6003A0640 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 761D156428D8E1F6003A0640 /* Assets.xcassets */; };
 		761D156828D8E1F6003A0640 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 761D156628D8E1F6003A0640 /* LaunchScreen.storyboard */; };
+		761D157028D8E632003A0640 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761D156F28D8E632003A0640 /* DetailViewController.swift */; };
+		761D157628D8FCDC003A0640 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761D157528D8FCDC003A0640 /* NoteCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		761D156428D8E1F6003A0640 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		761D156728D8E1F6003A0640 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		761D156928D8E1F6003A0640 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		761D156F28D8E632003A0640 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		761D157528D8FCDC003A0640 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +64,11 @@
 				761D155D28D8E1F6003A0640 /* SceneDelegate.swift */,
 				761D155F28D8E1F6003A0640 /* ViewController.swift */,
 				761D156128D8E1F6003A0640 /* Main.storyboard */,
+				761D156F28D8E632003A0640 /* DetailViewController.swift */,
 				761D156428D8E1F6003A0640 /* Assets.xcassets */,
 				761D156628D8E1F6003A0640 /* LaunchScreen.storyboard */,
 				761D156928D8E1F6003A0640 /* Info.plist */,
+				761D157528D8FCDC003A0640 /* NoteCell.swift */,
 			);
 			path = "Notes App";
 			sourceTree = "<group>";
@@ -140,7 +146,9 @@
 			files = (
 				761D156028D8E1F6003A0640 /* ViewController.swift in Sources */,
 				761D155C28D8E1F6003A0640 /* AppDelegate.swift in Sources */,
+				761D157628D8FCDC003A0640 /* NoteCell.swift in Sources */,
 				761D155E28D8E1F6003A0640 /* SceneDelegate.swift in Sources */,
+				761D157028D8E632003A0640 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
