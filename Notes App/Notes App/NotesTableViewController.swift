@@ -13,8 +13,24 @@ class NotesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.isToolbarHidden = false
+        
+        var toolbar = [UIBarButtonItem]()
+        
+        toolbar.append(
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        )
+        toolbar.append(
+            UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(compose))
+        )
+        
+        toolbarItems = toolbar
+        
+        
         let nib = UINib(nibName: "NoteCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "NoteCell")
+        
+        
         
     }
 
@@ -42,7 +58,12 @@ class NotesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
-
+    
+    //toolbar button functions
+    
+    @objc func compose() {
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.

@@ -13,9 +13,22 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.isToolbarHidden = false
+        
+        var toolbar = [UIBarButtonItem]()
+        
+        toolbar.append(
+            UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(createNewFolder))
+        )
+        
+        toolbarItems = toolbar
+        
+        let nib = UINib(nibName: "FolderCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "FolderCell")
+        
         let note = Note(savedNoteTitle: "Note Title", savedDateEdited: "20.09.2022", savedBodyText: "Lorem ipsum lorem vsvs and vsvssvs for vs")
         
-        let folder = Folder(savedFolderName: "First Note Folder", savedNotes: [Note]())
+        let folder = Folder(savedFolderName: "All notes", savedNotes: [Note]())
         
         folder.savedNotes.append(note)
         folders.append(folder)
@@ -32,7 +45,7 @@ class ViewController: UITableViewController {
         }
         //title and other visuals for each cell
         cell.cellFolderTitle.text = folders[indexPath.row].savedFolderName
-        cell.cellFolderImage.image = nil
+        cell.cellFolderImage.image = UIImage(systemName: "folder")
         return cell
     }
     
@@ -43,6 +56,9 @@ class ViewController: UITableViewController {
         }
     }
 
+    @objc func createNewFolder() {
+        
+    }
 
 }
 

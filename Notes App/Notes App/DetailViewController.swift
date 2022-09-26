@@ -8,11 +8,28 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.isToolbarHidden = false
+        
+        var toolbar = [UIBarButtonItem]()
+        
+        toolbar.append(
+            UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(remove))
+        )
+        toolbar.append(
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        )
+        
+        toolbarItems = toolbar
 
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func remove() {
+        
     }
     
 
