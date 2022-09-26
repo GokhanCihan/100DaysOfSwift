@@ -78,14 +78,14 @@
 				761D156428D8E1F6003A0640 /* Assets.xcassets */,
 				761D156628D8E1F6003A0640 /* LaunchScreen.storyboard */,
 				761D156928D8E1F6003A0640 /* Info.plist */,
+				761D155F28D8E1F6003A0640 /* ViewController.swift */,
 				76A4EA6B28DA3CEA000ED201 /* Folder.swift */,
 				76154B9C28DE3EC5001C4F4E /* FolderCell.swift */,
 				76154B9D28DE3EC5001C4F4E /* FolderCell.xib */,
+				76AB138228D9DAE300D21E51 /* NotesTableViewController.swift */,
 				76AB138028D9D1F500D21E51 /* Note.swift */,
 				76E9F31F28DBC55400A60D25 /* NoteCell.swift */,
 				76E9F32028DBC55400A60D25 /* NoteCell.xib */,
-				761D155F28D8E1F6003A0640 /* ViewController.swift */,
-				76AB138228D9DAE300D21E51 /* NotesTableViewController.swift */,
 				761D156F28D8E632003A0640 /* DetailViewController.swift */,
 			);
 			path = "Notes App";

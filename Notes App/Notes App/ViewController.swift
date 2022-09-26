@@ -12,30 +12,32 @@ class ViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        load()
+        //implement cell layout
+        let nib = UINib(nibName: "FolderCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "FolderCell")
         
+        //create toolbar
         self.navigationController?.isToolbarHidden = false
         
         var toolbar = [UIBarButtonItem]()
         
         toolbar.append(
-            UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(createNewFolder))
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         )
-        
+        toolbar.append(
+            UIBarButtonItem(image: UIImage(systemName: "folder.badge.plus"), style: .plain, target: self, action: #selector(createNewFolder))
+        )
         toolbarItems = toolbar
         
-        let nib = UINib(nibName: "FolderCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: "FolderCell")
-        
-        let note = Note(savedNoteTitle: "Note Title", savedDateEdited: "20.09.2022", savedBodyText: "Lorem ipsum lorem vsvs and vsvssvs for vs")
-        
-        let folder = Folder(savedFolderName: "All notes", savedNotes: [Note]())
-        
-        folder.savedNotes.append(note)
-        folders.append(folder)
+        if folders.count == 0 {
+            let folder = Folder(savedFolderName: "All notes", savedNotes: [Note]())
+            folders.append(folder)
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //add number of rows to be shown
+        //add number of rows
         return folders.count
     }
     
@@ -57,7 +59,34 @@ class ViewController: UITableViewController {
     }
 
     @objc func createNewFolder() {
+        let newFolder = Folder(savedFolderName: "created folder", savedNotes: [Note]())
+        folders.append(newFolder)
+        save()
+        tableView.reloadData()
+    }
+    
+    func save() {
+        let jsonEncoder = JSONEncoder()
         
+        if let savedData = try? jsonEncoder.encode(folders) {
+            let defaults = UserDefaults.standard
+            defaults.set(savedData, forKey: "folders")
+        } else {
+            print("save failed")
+        }
+    }
+    
+    func load() {
+        let defaults = UserDefaults.standard
+        
+        if let savedData = defaults.object(forKey: "folders") as? Data {
+            let jsonDecoder = JSONDecoder()
+            do {
+                folders = try jsonDecoder.decode([Folder].self, from: savedData)
+            } catch {
+                print("load failed")
+            }
+        }
     }
 
 }
