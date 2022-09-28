@@ -8,7 +8,7 @@
 import UIKit
 
 class NotesTableViewController: UITableViewController {
-    var notes: [Note]!
+    var thisFolder: Folder!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +17,7 @@ class NotesTableViewController: UITableViewController {
         
         var toolbar = [UIBarButtonItem]()
         
+        toolbar.append(UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteThisFolder)))
         toolbar.append(
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         )
@@ -30,15 +31,13 @@ class NotesTableViewController: UITableViewController {
         let nib = UINib(nibName: "NoteCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "NoteCell")
         
-        
-        
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return notes.count
+        return thisFolder.savedNotes.count
     }
 
     
@@ -47,12 +46,19 @@ class NotesTableViewController: UITableViewController {
             fatalError("Unable to dequeue NoteCell")
         }
 
-        cell.cellNoteTitle.text = notes[indexPath.row].savedNoteTitle
-        cell.cellBodyText.text = notes[indexPath.row].savedBodyText
-        cell.cellDateEdited.text = notes[indexPath.row].savedDateEdited
+        cell.cellNoteTitle.text = thisFolder.savedNotes[indexPath.row].savedNoteTitle
+        cell.cellBodyText.text = thisFolder.savedNotes[indexPath.row].savedBodyText
+        cell.cellDateEdited.text = thisFolder.savedNotes[indexPath.row].savedDateEdited
         
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -60,9 +66,14 @@ class NotesTableViewController: UITableViewController {
     }
     
     //toolbar button functions
+    @objc func deleteThisFolder() {
+        
+    }
     
     @objc func compose() {
-        
+        var newNote = Note(savedNoteTitle: "", savedDateEdited: "28.10.2022", savedBodyText: "", isSavedOnFolder: thisFolder.savedFolderName)
+        thisFolder.savedNotes.append(newNote)
+        tableView.reloadData()
     }
 
     /*

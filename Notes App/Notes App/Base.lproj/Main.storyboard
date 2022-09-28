@@ -54,9 +54,52 @@
                     <view key="view" contentMode="scaleToFill" id="4ts-Ag-IDa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="fill" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="jU3-rx-Hdv">
+                                <rect key="frame" x="20" y="77" width="374" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="moa-CA-crE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28 September 2022 18:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PW7-Ub-ddp">
+                                <rect key="frame" x="20" y="48" width="374" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Bm1-AW-y43"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Jugem jugem" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EK6-K6-43f">
+                                <rect key="frame" x="20" y="115" width="374" height="747"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="c95-Y8-37T"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jU3-rx-Hdv" firstAttribute="leading" secondItem="EK6-K6-43f" secondAttribute="leading" id="6UP-EI-OTO"/>
+                            <constraint firstItem="PW7-Ub-ddp" firstAttribute="leading" secondItem="jU3-rx-Hdv" secondAttribute="leading" id="9GM-On-hGz"/>
+                            <constraint firstItem="jU3-rx-Hdv" firstAttribute="trailing" secondItem="EK6-K6-43f" secondAttribute="trailing" id="Aq0-7l-gEW"/>
+                            <constraint firstItem="PW7-Ub-ddp" firstAttribute="trailing" secondItem="jU3-rx-Hdv" secondAttribute="trailing" id="Ccp-HZ-gz6"/>
+                            <constraint firstItem="PW7-Ub-ddp" firstAttribute="top" secondItem="c95-Y8-37T" secondAttribute="top" id="Pjg-lE-nJh"/>
+                            <constraint firstItem="EK6-K6-43f" firstAttribute="bottom" secondItem="c95-Y8-37T" secondAttribute="bottom" id="VL2-6O-QR7"/>
+                            <constraint firstItem="jU3-rx-Hdv" firstAttribute="top" secondItem="PW7-Ub-ddp" secondAttribute="bottom" constant="8" id="gOt-kP-z5g"/>
+                            <constraint firstItem="EK6-K6-43f" firstAttribute="top" secondItem="jU3-rx-Hdv" secondAttribute="bottom" constant="4" id="k5J-bn-wHA"/>
+                            <constraint firstItem="PW7-Ub-ddp" firstAttribute="trailing" secondItem="4ts-Ag-IDa" secondAttribute="trailingMargin" id="l9W-Di-3Na"/>
+                            <constraint firstItem="PW7-Ub-ddp" firstAttribute="leading" secondItem="4ts-Ag-IDa" secondAttribute="leadingMargin" id="uDE-dP-aeo"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="detailDate" destination="PW7-Ub-ddp" id="A50-30-aba"/>
+                        <outlet property="detailNoteBody" destination="EK6-K6-43f" id="j8F-Ra-aUq"/>
+                        <outlet property="detailNoteTitle" destination="jU3-rx-Hdv" id="WKE-eP-CQk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xzi-7j-JUc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -82,6 +125,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

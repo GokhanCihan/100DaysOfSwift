@@ -8,9 +8,14 @@
 import UIKit
 
 class DetailViewController: UIViewController {
+    @IBOutlet var detailDate: UILabel!
+    @IBOutlet var detailNoteTitle: UITextField!
+    @IBOutlet var detailNoteBody: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
         
         self.navigationController?.isToolbarHidden = false
         
@@ -32,6 +37,9 @@ class DetailViewController: UIViewController {
         
     }
     
+    @objc func done() {
+        
+    }
 
     /*
     // MARK: - Navigation
