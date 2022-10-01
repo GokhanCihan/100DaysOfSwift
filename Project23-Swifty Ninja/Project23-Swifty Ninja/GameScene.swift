@@ -24,8 +24,13 @@ class GameScene: SKScene {
     var sequencePosition = 0
     var chainDelay = 3.0
     var nextSequenceQueued = true
-
     
+    let xVelocityRange = 3...5
+    let xVelocityRangeFast = 8...15
+    let xPositionRange = 64...960
+    let yVelocityRange = 24...32
+    let angularVelocityRange = CGFloat(3)...CGFloat(-3)
+
     enum SequenceType: CaseIterable {
         case oneNoBomb, one, twoWithOneBomb, two, three, four, chain, fastChain
     }
@@ -208,24 +213,24 @@ class GameScene: SKScene {
             enemy.name = "enemy"
         }
         
-        let randomPosition = CGPoint(x: Int.random(in: 64...960), y: -128)
+        let randomPosition = CGPoint(x: Int.random(in: xPositionRange), y: -128)
         enemy.position = randomPosition
         
-        let randomAngularVelocity = CGFloat.random(in: -3...3 )
+        let randomAngularVelocity = CGFloat.random(in: angularVelocityRange )
         
         let randomXVelocity: Int
         
         if randomPosition.x < 256 {
-            randomXVelocity = Int.random(in: 8...15)
+            randomXVelocity = Int.random(in: xVelocityRangeFast)
         } else if randomPosition.x < 512 {
-            randomXVelocity = Int.random(in: 3...5)
+            randomXVelocity = Int.random(in: xVelocityRange)
         } else if randomPosition.x < 768 {
-            randomXVelocity = -Int.random(in: 3...5)
+            randomXVelocity = -Int.random(in: xVelocityRange)
         } else {
-            randomXVelocity = -Int.random(in: 8...15)
+            randomXVelocity = -Int.random(in: xVelocityRangeFast)
         }
         
-        let randomYVelocity = Int.random(in: 24...32)
+        let randomYVelocity = Int.random(in: yVelocityRange)
         
         enemy.physicsBody = SKPhysicsBody(circleOfRadius: 64)
         enemy.physicsBody?.velocity = CGVector(dx: randomXVelocity * 40, dy: randomYVelocity * 40)
@@ -283,7 +288,6 @@ class GameScene: SKScene {
         nextSequenceQueued = false
     }
 
-    
     func redrawActiveSlice() {
         // one point can not draw a line, exit
         if activeSlicePoints.count < 2 {
@@ -355,7 +359,6 @@ class GameScene: SKScene {
         addChild(activeSliceBG)
         addChild(activeSliceFG)
     }
-    
     
     func subtractLife() {
         lives -= 1
