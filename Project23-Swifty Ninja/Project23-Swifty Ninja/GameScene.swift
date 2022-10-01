@@ -46,6 +46,8 @@ class GameScene: SKScene {
             gameScore.text = "Score: \(score)"
         }
     }
+    
+    var gameOver: SKLabelNode!
 
     var livesImages = [SKSpriteNode]()
     var lives = 3
@@ -403,6 +405,15 @@ class GameScene: SKScene {
             livesImages[1].texture = SKTexture(imageNamed: "sliceLifeGone")
             livesImages[2].texture = SKTexture(imageNamed: "sliceLifeGone")
         }
+        
+        gameOver = SKLabelNode(fontNamed: "Chalkduster")
+        gameOver.text = "GAME OVER!"
+        gameOver.fontColor = .red
+        gameOver.horizontalAlignmentMode = .center
+        gameOver.fontSize = 96
+        gameOver.position = CGPoint(x: 512, y: 384)
+        addChild(gameOver)
+        
     }
     
     override func update(_ currentTime: TimeInterval) {
