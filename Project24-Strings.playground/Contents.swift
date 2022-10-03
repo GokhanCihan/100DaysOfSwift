@@ -86,3 +86,45 @@ attributedStringx.addAttribute(.font, value: UIFont.systemFont(ofSize: 16), rang
 attributedStringx.addAttribute(.font, value: UIFont.systemFont(ofSize: 24), range: NSRange(location: 8, length: 1))
 attributedStringx.addAttribute(.font, value: UIFont.systemFont(ofSize: 32), range: NSRange(location: 10, length: 4))
 attributedStringx.addAttribute(.font, value: UIFont.systemFont(ofSize: 40), range: NSRange(location: 15, length: 6))
+
+
+//Challenge #1
+extension String {
+    func returnWithPrefix(_ prefix: String) -> String {
+        if self.hasPrefix(prefix) {
+            return self
+        } else {
+            return prefix + self
+        }
+    }
+}
+"car".returnWithPrefix("nas")
+"hero".returnWithPrefix("her")
+
+
+//challenge #2
+extension String {
+    var containsNumeric: Bool {
+        var result = false
+        for char in self {
+            if Double(String(char)) != nil {
+                result = true
+            }
+        }
+        return result
+    }
+}
+
+"hello".containsNumeric
+"h3ll0:)".containsNumeric
+
+
+//challenge #3
+extension String {
+    var lines: [String] {
+        return self.components(separatedBy: "\n")
+    }
+}
+
+let text = "hahaha\nhehehe\nhohoho"
+text.lines
