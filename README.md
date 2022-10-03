@@ -21,5 +21,7 @@
 - [ ] challenge #3 (need another device)
 
 ## Milestone - Space Shooter 
+incomplete
 
 ## Milestone - Notes App
+incomplete
