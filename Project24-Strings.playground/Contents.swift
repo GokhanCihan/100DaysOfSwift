@@ -128,3 +128,17 @@ extension String {
 
 let text = "hahaha\nhehehe\nhohoho"
 text.lines
+
+//day 82 challenge #3
+extension Array where Element: Comparable {
+    mutating func remove(item: Element) -> Array {
+        if let index = self.firstIndex(of: item) {
+            self.remove(at: index)
+        }
+        return self
+    }
+}
+
+var array = [1,2,1,3,4]
+array.remove(item: 1)
+print(array)
