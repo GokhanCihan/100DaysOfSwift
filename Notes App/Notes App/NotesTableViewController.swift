@@ -8,6 +8,7 @@
 import UIKit
 
 class NotesTableViewController: UITableViewController {
+    var folders: [Folder]!
     var thisFolder: Folder!
 
     override func viewDidLoad() {
@@ -36,7 +37,6 @@ class NotesTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return thisFolder.savedNotes.count
     }
 
@@ -71,9 +71,11 @@ class NotesTableViewController: UITableViewController {
     }
     
     @objc func compose() {
-        var newNote = Note(savedNoteTitle: "", savedDateEdited: "28.10.2022", savedBodyText: "", isSavedOnFolder: thisFolder.savedFolderName)
-        thisFolder.savedNotes.append(newNote)
-        tableView.reloadData()
+        
+        
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 
     /*

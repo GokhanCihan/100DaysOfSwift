@@ -12,8 +12,15 @@ class DetailViewController: UIViewController {
     @IBOutlet var detailNoteTitle: UITextField!
     @IBOutlet var detailNoteBody: UITextView!
     
+    var now = Date.now
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let detailedFormatter = DateFormatter()
+        let clockFormatter = DateFormatter()
+        detailedFormatter.dateFormat = "d MMMM y HH:mm"
+        detailDate.text = detailedFormatter.string(from: now)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
         
@@ -38,17 +45,6 @@ class DetailViewController: UIViewController {
     }
     
     @objc func done() {
-        
+        //save and exite
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -7,6 +7,16 @@
 
 import UIKit
 
+extension UIView {
+    func bounceOut(withDuration: Double) {
+        UIView.animate(withDuration: withDuration, delay: 2, options: [],
+                       animations: {
+            self.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
+        }
+        )
+    }
+}
+
 class ViewController: UIViewController {
     var imageView: UIImageView!
     var currentAnimation = 0
@@ -51,20 +61,27 @@ class ViewController: UIViewController {
             case 7:
                 self.imageView.alpha = 1
                 self.imageView.backgroundColor = UIColor.clear
-                
+                self.imageView.transform = .identity
             default:
                 break
             }
         }) { finished in
             sender.isHidden = false
+            if self.currentAnimation == 8 {
+                self.imageView.bounceOut(withDuration: 10)
+                
+            }
+            
         }
         
         currentAnimation += 1
         
-        if currentAnimation > 7 {
+        if currentAnimation > 8 {
             currentAnimation = 0
         }
+        
     }
+    
     
 }
 

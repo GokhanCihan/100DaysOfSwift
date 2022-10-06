@@ -54,7 +54,8 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "NotesInFolder") as? NotesTableViewController {
-            vc.thisFolder = folders[indexPath.row]
+            vc.thisFolder = folders.remove(at: indexPath.row)
+            vc.folders = folders
             navigationController?.pushViewController(vc, animated: true)
         }
     }
