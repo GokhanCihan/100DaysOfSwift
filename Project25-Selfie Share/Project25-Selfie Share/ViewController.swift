@@ -14,6 +14,7 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
         switch state {
         case .connected:
             print("Connected: \(peerID.displayName)")
+            
 
         case .connecting:
             print("Connecting: \(peerID.displayName)")
@@ -45,15 +46,12 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
-
     }
 
     func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
-
     }
 
     func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
-
     }
     
     var images = [UIImage]()
@@ -74,7 +72,6 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
         //initialize MCSession
         mcSession = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .required)
         mcSession?.delegate = self
-        
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -134,13 +131,13 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
     
     func startHosting(action: UIAlertAction) {
         guard let mcSession = mcSession else { return }
-        mcAdvertiserAssistant = MCAdvertiserAssistant(serviceType: "gokhan-selfieshare", discoveryInfo: nil, session: mcSession)
+        mcAdvertiserAssistant = MCAdvertiserAssistant(serviceType: "gkn-selfieshare", discoveryInfo: nil, session: mcSession)
         mcAdvertiserAssistant?.start()
     }
 
     func joinSession(action: UIAlertAction) {
         guard let mcSession = mcSession else { return }
-        let mcBrowser = MCBrowserViewController(serviceType: "gokhan-selfieshare", session: mcSession)
+        let mcBrowser = MCBrowserViewController(serviceType: "gkn-selfieshare", session: mcSession)
         mcBrowser.delegate = self
         present(mcBrowser, animated: true)
     }

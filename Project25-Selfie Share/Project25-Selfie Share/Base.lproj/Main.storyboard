@@ -30,12 +30,24 @@
                                     <rect key="frame" x="0.0" y="0.0" width="145" height="145"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1000" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OnJ-xu-zga">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1000" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="OnJ-xu-zga">
                                             <rect key="frame" x="0.0" y="0.0" width="145" height="145"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="OnJ-xu-zga" firstAttribute="centerX" secondItem="dRG-Lc-XBq" secondAttribute="centerX" id="CLP-na-9Oi"/>
+                                        <constraint firstItem="OnJ-xu-zga" firstAttribute="centerY" secondItem="dRG-Lc-XBq" secondAttribute="centerY" id="Cmy-1f-WT8"/>
+                                        <constraint firstItem="OnJ-xu-zga" firstAttribute="leading" secondItem="dRG-Lc-XBq" secondAttribute="leading" id="DtA-lg-tlp"/>
+                                        <constraint firstItem="OnJ-xu-zga" firstAttribute="top" secondItem="dRG-Lc-XBq" secondAttribute="top" id="iBm-SG-W4I"/>
+                                    </constraints>
                                 </collectionViewCellContentView>
+                                <constraints>
+                                    <constraint firstAttribute="trailingMargin" secondItem="dRG-Lc-XBq" secondAttribute="trailing" constant="-8" id="Aa4-K5-wGu"/>
+                                    <constraint firstItem="dRG-Lc-XBq" firstAttribute="leading" secondItem="yPN-1W-LW2" secondAttribute="leadingMargin" constant="-8" id="Qob-Xj-zp8"/>
+                                    <constraint firstItem="dRG-Lc-XBq" firstAttribute="top" secondItem="yPN-1W-LW2" secondAttribute="topMargin" constant="-8" id="VzK-lq-0tf"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="dRG-Lc-XBq" secondAttribute="bottom" constant="-8" id="eA6-BR-JLq"/>
+                                </constraints>
                             </collectionViewCell>
                         </cells>
                         <connections>
