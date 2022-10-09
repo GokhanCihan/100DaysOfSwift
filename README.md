@@ -25,3 +25,11 @@ incomplete
 
 ## Milestone - Notes App
 incomplete
+
+## Project 25
+
+Peers won't detect eachother.
+
+- [ ] challenge #1
+- [ ] challenge #2
+- [ ] challenge #3
