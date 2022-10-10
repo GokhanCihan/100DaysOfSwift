@@ -14,8 +14,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var motionManager: CMMotionManager!
     
     var player: SKSpriteNode!
+    var startingPosition = CGPoint(x: 96, y: 672)
     
     var lastTouchPosition: CGPoint?
+    
+    var portalCollection = [SKSpriteNode]()
     
     var scoreLabel: SKLabelNode!
     var score = 0 {
@@ -32,6 +35,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case star = 4
         case vortex = 8
         case finish = 16
+        case portal = 32
     }
     
     override func didMove(to view: SKView) {
@@ -52,12 +56,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.text = "Score: 0"
         scoreLabel.horizontalAlignmentMode = .left
         scoreLabel.position = CGPoint(x: 16, y: 16)
-        scoreLabel.zPosition = 2
+        scoreLabel.zPosition = 3
         addChild(scoreLabel)
         
         loadLevel()
         
-        createPlayer()
+        createPlayer(at: startingPosition)
         
     }
     
@@ -110,42 +114,54 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func playerCollided(with node: SKNode) {
         
         if node.name == "vortex" {
-            player.physicsBody?.isDynamic = false
-            isGameOver = true
             score -= 1
-
-            let move = SKAction.move(to: node.position, duration: 0.25)
-            let scale = SKAction.scale(to: 0.0001, duration: 0.25)
-            let remove = SKAction.removeFromParent()
-            let sequence = SKAction.sequence([move, scale, remove])
-
-            player.run(sequence) { [weak self] in
-                self?.createPlayer()
-                self?.isGameOver = false
-            }
+            playerChangesPosition(from: node.position, to: startingPosition)
         } else if node.name == "star" {
             node.removeFromParent()
             score += 1
+        } else if node.name == "portal" {
+            let randomPortal = portalCollection.randomElement()
+            if let randomTeleportPosition = randomPortal?.position {
+                playerChangesPosition(from: node.position, to: randomTeleportPosition)
+                
+                randomPortal?.removeFromParent()
+                node.removeFromParent()
+            }
         } else if node.name == "finish" {
             // next level?
         }
         
     }
     
-    func createPlayer() {
+    func createPlayer(at position: CGPoint) {
         
         player = SKSpriteNode(imageNamed: "player")
-        player.position = CGPoint(x: 96, y: 672)
+        player.position = position
         player.zPosition = 1
         player.physicsBody = SKPhysicsBody(circleOfRadius: player.size.width / 2)
         player.physicsBody?.allowsRotation = false
         player.physicsBody?.linearDamping = 0.5
 
         player.physicsBody?.categoryBitMask = CollisionTypes.player.rawValue
-        player.physicsBody?.contactTestBitMask = CollisionTypes.star.rawValue | CollisionTypes.vortex.rawValue | CollisionTypes.finish.rawValue
+        player.physicsBody?.contactTestBitMask = CollisionTypes.star.rawValue | CollisionTypes.vortex.rawValue | CollisionTypes.finish.rawValue | CollisionTypes.portal.rawValue
         player.physicsBody?.collisionBitMask = CollisionTypes.wall.rawValue
         addChild(player)
         
+    }
+    
+    func playerChangesPosition(from position1: CGPoint,to position2: CGPoint) {
+        player.physicsBody?.isDynamic = false
+        isGameOver = true
+        
+        let move = SKAction.move(to: position1, duration: 0.25)
+        let scale = SKAction.scale(to: 0.0001, duration: 0.25)
+        let remove = SKAction.removeFromParent()
+        let sequence = SKAction.sequence([move, scale, remove])
+        
+        player.run(sequence) { [weak self] in
+                self?.createPlayer(at: position2)
+                self?.isGameOver = false
+        }
     }
     
     func loadLevel() {
@@ -166,6 +182,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if letter == "x" { createNode(for: "block", at: position, withCollisionType: .wall) }
                 else if letter == "v" { createNode(for: "vortex", at: position, withCollisionType: .vortex) }
                 else if letter == "s" { createNode(for: "star", at: position, withCollisionType: .star) }
+                else if letter == "p" { createNode(for: "portal", at: position, withCollisionType: .portal)}
                 else if letter == "f" { createNode(for: "finish", at: position, withCollisionType: .finish) }
                 else if letter == " " { // this is just an empty tile!
                 } else { fatalError("Unknown level letter: \(letter)") }
@@ -193,7 +210,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         node.physicsBody?.isDynamic = false
 
-        
+        if objectName == "portal" {
+            portalCollection.append(node)
+            node.run(SKAction.repeatForever(SKAction.rotate(byAngle: .pi, duration: 1)))
+        }
         
         node.physicsBody?.collisionBitMask = 0
         addChild(node)
