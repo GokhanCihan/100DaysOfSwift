@@ -120,13 +120,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             node.removeFromParent()
             score += 1
         } else if node.name == "portal" {
-            let randomPortal = portalCollection.randomElement()
-            if let randomTeleportPosition = randomPortal?.position {
-                playerChangesPosition(from: node.position, to: randomTeleportPosition)
-                
-                randomPortal?.removeFromParent()
-                node.removeFromParent()
-            }
+            let randomIndex = Int.random(in: 0..<portalCollection.count)
+            let randomPortal = portalCollection[randomIndex]
+            let randomTeleportPosition = randomPortal.position
+            playerChangesPosition(from: node.position, to: randomTeleportPosition)
+            portalCollection.remove(at: randomIndex)
+            randomPortal.removeFromParent()
+            node.removeFromParent()
+            
         } else if node.name == "finish" {
             // next level?
         }
@@ -154,7 +155,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         isGameOver = true
         
         let move = SKAction.move(to: position1, duration: 0.25)
-        let scale = SKAction.scale(to: 0.0001, duration: 0.25)
+        let scale = SKAction.scale(to: 0.0001, duration: 0.1)
         let remove = SKAction.removeFromParent()
         let sequence = SKAction.sequence([move, scale, remove])
         
@@ -179,11 +180,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             for (column, letter) in line.enumerated() {
                 
                 let position = CGPoint(x: (64 * column) + 32, y: (64 * row) + 32)
-                if letter == "x" { createNode(for: "block", at: position, withCollisionType: .wall) }
-                else if letter == "v" { createNode(for: "vortex", at: position, withCollisionType: .vortex) }
-                else if letter == "s" { createNode(for: "star", at: position, withCollisionType: .star) }
-                else if letter == "p" { createNode(for: "portal", at: position, withCollisionType: .portal)}
-                else if letter == "f" { createNode(for: "finish", at: position, withCollisionType: .finish) }
+                if letter == "x" { createObject(for: "block", at: position, withCollisionType: .wall) }
+                else if letter == "v" { createObject(for: "vortex", at: position, withCollisionType: .vortex) }
+                else if letter == "s" { createObject(for: "star", at: position, withCollisionType: .star) }
+                else if letter == "p" { createObject(for: "portal", at: position, withCollisionType: .portal)}
+                else if letter == "f" { createObject(for: "finish", at: position, withCollisionType: .finish) }
                 else if letter == " " { // this is just an empty tile!
                 } else { fatalError("Unknown level letter: \(letter)") }
                 
@@ -191,7 +192,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func createNode(for objectName: String, at position: CGPoint, withCollisionType collisionType: CollisionTypes) {
+    func createObject(for objectName: String, at position: CGPoint, withCollisionType collisionType: CollisionTypes) {
         let node = SKSpriteNode(imageNamed: objectName)
         node.name = objectName
         node.position = position
