@@ -1,24 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Project27_Core_Graphics" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4hX-qb-yLZ">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1024" id="b6U-9K-z91"/>
+                                    <constraint firstAttribute="width" constant="768" id="h8Q-xK-7Pl"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4vr-0Y-702">
+                                <rect key="frame" x="300" y="880" width="168" height="124"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Redraw">
+                                            <attributes>
+                                                <font key="NSFont" size="27" name="GillSans"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <buttonConfiguration key="configuration" style="plain" title="Redraw" titleAlignment="automatic">
+                                    <fontDescription key="titleFontDescription" name="GeezaPro" family="Geeza Pro" pointSize="34"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="redrawTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dca-yj-zBl"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4hX-qb-yLZ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Gk0-KY-aeZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4vr-0Y-702" secondAttribute="trailing" constant="300" id="XPh-iw-cCi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4vr-0Y-702" secondAttribute="bottom" constant="20" id="ZgH-Tk-49R"/>
+                            <constraint firstItem="4hX-qb-yLZ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="eD2-Ub-xGm"/>
+                            <constraint firstItem="4hX-qb-yLZ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fJ0-6Q-t6l"/>
+                            <constraint firstItem="4vr-0Y-702" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="300" id="fVQ-4w-9Mk"/>
+                            <constraint firstItem="4vr-0Y-702" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="860" id="uGF-Dh-br6"/>
+                            <constraint firstItem="4hX-qb-yLZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="zt5-LS-TT6"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="4hX-qb-yLZ" id="iWp-N0-PN2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-62.5" y="35.7421875"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
