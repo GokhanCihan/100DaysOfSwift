@@ -14,18 +14,24 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
         invitationHandler(true, mcSession)
     }
     
+    
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         switch state {
         case .connected:
             print("Connected: \(peerID.displayName)")
-            
 
         case .connecting:
             print("Connecting: \(peerID.displayName)")
 
         case .notConnected:
-            print("Not Connected: \(peerID.displayName)")
-
+            
+            let ac = UIAlertController(title: "connection with \(peerID.displayName) ended.", message: nil, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .cancel))
+            
+            DispatchQueue.main.async {
+                self.present(ac, animated: true)
+            }
+            
         @unknown default:
             print("Unknown state received: \(peerID.displayName)")
         }
@@ -40,6 +46,8 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
             }
         }
     }
+    
+    
     
     func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
         dismiss(animated: true)
@@ -57,13 +65,18 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
 
     func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
     }
-    
+
     var images = [UIImage]()
     
     var peerID = MCPeerID(displayName: UIDevice.current.name)
     var mcSession: MCSession?
     var mcAdvertiserAssistant: MCNearbyServiceAdvertiser?
-
+    
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -129,12 +142,12 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
         let ac = UIAlertController(title: "Connect to others", message: nil, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "Host a session", style: .default, handler: startHosting))
         ac.addAction(UIAlertAction(title: "Join a session", style: .default, handler: joinSession))
+        ac.addAction(UIAlertAction(title: "Disconnect", style: .default, handler: disconnectFromSession))
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
     }
     
     func startHosting(action: UIAlertAction) {
-        guard let mcSession = mcSession else { return }
         mcAdvertiserAssistant = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: "gkn-selfieshare")
         mcAdvertiserAssistant?.delegate = self
         mcAdvertiserAssistant?.startAdvertisingPeer()
@@ -145,6 +158,10 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
         let mcBrowser = MCBrowserViewController(serviceType: "gkn-selfieshare", session: mcSession)
         mcBrowser.delegate = self
         present(mcBrowser, animated: true)
+    }
+    
+    func disconnectFromSession(action: UIAlertAction) {
+        mcSession?.disconnect()
     }
 
 }
