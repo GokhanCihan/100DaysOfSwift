@@ -42,12 +42,6 @@
                                         <constraint firstItem="OnJ-xu-zga" firstAttribute="top" secondItem="dRG-Lc-XBq" secondAttribute="top" id="iBm-SG-W4I"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <constraints>
-                                    <constraint firstAttribute="trailingMargin" secondItem="dRG-Lc-XBq" secondAttribute="trailing" constant="-8" id="Aa4-K5-wGu"/>
-                                    <constraint firstItem="dRG-Lc-XBq" firstAttribute="leading" secondItem="yPN-1W-LW2" secondAttribute="leadingMargin" constant="-8" id="Qob-Xj-zp8"/>
-                                    <constraint firstItem="dRG-Lc-XBq" firstAttribute="top" secondItem="yPN-1W-LW2" secondAttribute="topMargin" constant="-8" id="VzK-lq-0tf"/>
-                                    <constraint firstAttribute="bottomMargin" secondItem="dRG-Lc-XBq" secondAttribute="bottom" constant="-8" id="eA6-BR-JLq"/>
-                                </constraints>
                             </collectionViewCell>
                         </cells>
                         <connections>

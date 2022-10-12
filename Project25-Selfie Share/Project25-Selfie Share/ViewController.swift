@@ -8,7 +8,11 @@
 import UIKit
 import MultipeerConnectivity
 
-class ViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, MCSessionDelegate, MCBrowserViewControllerDelegate {
+class ViewController: UICollectionViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, MCSessionDelegate, MCBrowserViewControllerDelegate, MCNearbyServiceAdvertiserDelegate {
+    
+    func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
+        invitationHandler(true, mcSession)
+    }
     
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         switch state {
@@ -58,7 +62,7 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
     
     var peerID = MCPeerID(displayName: UIDevice.current.name)
     var mcSession: MCSession?
-    var mcAdvertiserAssistant: MCAdvertiserAssistant?
+    var mcAdvertiserAssistant: MCNearbyServiceAdvertiser?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,8 +135,9 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
     
     func startHosting(action: UIAlertAction) {
         guard let mcSession = mcSession else { return }
-        mcAdvertiserAssistant = MCAdvertiserAssistant(serviceType: "gkn-selfieshare", discoveryInfo: nil, session: mcSession)
-        mcAdvertiserAssistant?.start()
+        mcAdvertiserAssistant = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: "gkn-selfieshare")
+        mcAdvertiserAssistant?.delegate = self
+        mcAdvertiserAssistant?.startAdvertisingPeer()
     }
 
     func joinSession(action: UIAlertAction) {
