@@ -33,3 +33,13 @@ Peers won't detect eachother.
 - [ ] challenge #1
 - [ ] challenge #2
 - [ ] challenge #3
+
+## Project 26
+
+- [ ] challange #1
+
+## Project 27
+
+- [ ] challenge #1
+- [ ] challenge #2
+- [ ] challenge #3
