@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         }
 
         switch currentDrawType {
-        case 0:
+        case 5:
             drawRectangle()
         case 1:
             drawCircle()
@@ -29,6 +29,8 @@ class ViewController: UIViewController {
             drawRotatedSquares()
         case 4:
             drawImageAndText()
+        case 0:
+            drawStarEmoji()
         default:
             break
         }
@@ -39,7 +41,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        drawRectangle()
+        drawStarEmoji()
         
     }
 
@@ -145,6 +147,36 @@ class ViewController: UIViewController {
         }
         //6. update imageview
         imageView.image = img
+    }
+    
+    func drawStarEmoji() {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+
+        let img = renderer.image { ctx in
+            ctx.cgContext.translateBy(x: 256, y: 256)
+
+            let rotation = Double.pi / Double(4)
+            let amount = 4
+            for _ in 0...amount {
+                ctx.cgContext.rotate(by: CGFloat(rotation * Double(amount)))
+                ctx.cgContext.addRect(CGRect(x: -64, y: 64, width: 128, height: 128))
+            }
+            ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
+            ctx.cgContext.strokePath()
+        }
+        
+        let frame = renderer.image { ctx in
+            let rectangle = CGRect(x: 128, y: 128, width: 256, height: 256)
+
+            ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
+            ctx.cgContext.setLineWidth(5)
+
+            ctx.cgContext.addRect(rectangle)
+            ctx.cgContext.drawPath(using: .stroke)
+            img.draw(in: rectangle)
+        }
+
+        imageView.image = frame
     }
 }
 
