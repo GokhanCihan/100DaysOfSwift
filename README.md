@@ -30,7 +30,7 @@ incomplete
 
 - [x] challenge #1
 - [x] challenge #2
-- [ ] challenge #3
+- [x] challenge #3
 
 ## Project 26
 

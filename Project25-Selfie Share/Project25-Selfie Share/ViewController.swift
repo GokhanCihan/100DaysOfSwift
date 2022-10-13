@@ -49,7 +49,7 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
                 self?.collectionView.reloadData()
             }
             if let textMessage = String(data: data, encoding: .utf8.self) {
-                let ac = UIAlertController(title: "Text message from \(peerID.displayName):", message: textMessage, preferredStyle: .alert)
+                let ac = UIAlertController(title: "New message from \(peerID.displayName):", message: textMessage, preferredStyle: .alert)
                 ac.addAction(UIAlertAction(title: "OK", style: .cancel))
                 self?.present(ac, animated: true)
             }
@@ -86,10 +86,9 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
         title = "Selfie Share"
         
         var toolbar = [UIBarButtonItem]()
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        toolbar.append(flexibleSpace)
+        toolbar.append(UIBarButtonItem(image: UIImage(systemName: "person.3"), style: .plain, target: self, action: #selector(showConnectedPeers)))
+        toolbar.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
         toolbar.append(UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(sendMessage)))
-        toolbar.append(flexibleSpace)
         toolbarItems = toolbar
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(importPicture))
@@ -171,6 +170,21 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
         }
         
         collectionView.reloadData()
+    }
+    
+    @objc func showConnectedPeers() {
+        
+        if let connectedPeers = mcSession?.connectedPeers {
+            if connectedPeers.count > 0 {
+                let ac = UIAlertController(title: "Peers in this session:", message: nil, preferredStyle: .actionSheet)
+                for peer in connectedPeers {
+                    ac.addAction(UIAlertAction(title: "\(peer.displayName)", style: .default))
+                }
+                ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+                self.present(ac, animated: true)
+            }
+        }
+        
     }
     
     @objc func showConnectionPrompt() {
