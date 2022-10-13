@@ -19,7 +19,10 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
         switch state {
         case .connected:
             print("Connected: \(peerID.displayName)")
-
+            DispatchQueue.main.async {
+                self.navigationController?.isToolbarHidden = false
+            }
+            
         case .connecting:
             print("Connecting: \(peerID.displayName)")
 
@@ -30,6 +33,7 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
             
             DispatchQueue.main.async {
                 self.present(ac, animated: true)
+                self.navigationController?.isToolbarHidden = true
             }
             
         @unknown default:
@@ -44,10 +48,13 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
                 self?.images.insert(image, at: 0)
                 self?.collectionView.reloadData()
             }
+            if let textMessage = String(data: data, encoding: .utf8.self) {
+                let ac = UIAlertController(title: "Text message from \(peerID.displayName):", message: textMessage, preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .cancel))
+                self?.present(ac, animated: true)
+            }
         }
     }
-    
-    
     
     func browserViewControllerDidFinish(_ browserViewController: MCBrowserViewController) {
         dismiss(animated: true)
@@ -73,14 +80,17 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
     var mcAdvertiserAssistant: MCNearbyServiceAdvertiser?
     
     
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Selfie Share"
+        
+        var toolbar = [UIBarButtonItem]()
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.append(flexibleSpace)
+        toolbar.append(UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(sendMessage)))
+        toolbar.append(flexibleSpace)
+        toolbarItems = toolbar
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(importPicture))
         
@@ -89,6 +99,7 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
         //initialize MCSession
         mcSession = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .required)
         mcSession?.delegate = self
+        
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -103,6 +114,30 @@ class ViewController: UICollectionViewController, UINavigationControllerDelegate
         }
 
         return cell
+    }
+    
+    @objc func sendMessage() {
+        let ac = UIAlertController(title: "Send text message:", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+        
+        ac.addAction(UIAlertAction(title: "OK", style: .default) { [weak ac, weak self] _ in
+            guard let mcSession = self?.mcSession else { return }
+            
+            if mcSession.connectedPeers.count > 0 {
+                
+                if let typedText = ac?.textFields?[0].text {
+                    
+                    do {
+                        try mcSession.send(Data(typedText.utf8), toPeers: mcSession.connectedPeers, with: .reliable)
+                    } catch {
+                        let errorAc = UIAlertController(title: "Send error", message: error.localizedDescription, preferredStyle: .alert)
+                        errorAc.addAction(UIAlertAction(title: "OK", style: .default))
+                        self?.present(errorAc, animated: true)
+                    }
+                }
+            }
+        })
+        present(ac, animated: true)
     }
     
     @objc func importPicture() {
