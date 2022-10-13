@@ -28,6 +28,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     var isGameOver = false
+    var level = 1
     
     enum CollisionTypes: UInt32 {
         case player = 1
@@ -46,22 +47,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = .zero
         
-        let background = SKSpriteNode(imageNamed: "background.jpg")
-        background.position = CGPoint(x: 512, y: 384)
-        background.blendMode = .replace
-        background.zPosition = -1
-        addChild(background)
-        
-        scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
-        scoreLabel.text = "Score: 0"
-        scoreLabel.horizontalAlignmentMode = .left
-        scoreLabel.position = CGPoint(x: 16, y: 16)
-        scoreLabel.zPosition = 3
-        addChild(scoreLabel)
-        
-        loadLevel()
-        
-        createPlayer(at: startingPosition)
+        loadLevel(forLevel: "1")
         
     }
     
@@ -129,7 +115,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             node.removeFromParent()
             
         } else if node.name == "finish" {
-            // next level?
+            self.removeAllChildren()
+            loadLevel(forLevel: "2")
         }
         
     }
@@ -165,9 +152,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func loadLevel() {
+    func loadLevel(forLevel level: String) {
         
-        guard let levelURL = Bundle.main.url(forResource: "level1", withExtension: "txt") else {
+        let background = SKSpriteNode(imageNamed: "background.jpg")
+        background.position = CGPoint(x: 512, y: 384)
+        background.blendMode = .replace
+        background.zPosition = -1
+        addChild(background)
+        
+        scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        scoreLabel.horizontalAlignmentMode = .left
+        scoreLabel.position = CGPoint(x: 16, y: 16)
+        scoreLabel.zPosition = 3
+        addChild(scoreLabel)
+        
+        guard let levelURL = Bundle.main.url(forResource: "level" + "\(level)", withExtension: "txt") else {
             fatalError("Could not find level1.txt in the app bundle.")
         }
         guard let levelString = try? String(contentsOf: levelURL) else {
@@ -190,6 +189,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
             }
         }
+        createPlayer(at: startingPosition)
+        self.level += 1
     }
     
     func createObject(for objectName: String, at position: CGPoint, withCollisionType collisionType: CollisionTypes) {

@@ -34,7 +34,7 @@ incomplete
 
 ## Project 26
 
-- [ ] challange #1
+- [x] challange #1
 
 ## Project 27
 
