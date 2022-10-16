@@ -38,6 +38,6 @@ incomplete
 
 ## Project 27
 
-- [ ] challenge #1
+- [x] challenge #1
 - [ ] challenge #2
 - [ ] challenge #3

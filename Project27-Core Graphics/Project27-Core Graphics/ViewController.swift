@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         }
 
         switch currentDrawType {
-        case 5:
+        case 0:
             drawRectangle()
         case 1:
             drawCircle()
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
             drawRotatedSquares()
         case 4:
             drawImageAndText()
-        case 0:
+        case 5:
             drawStarEmoji()
         default:
             break
@@ -150,33 +150,38 @@ class ViewController: UIViewController {
     }
     
     func drawStarEmoji() {
-        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
-
-        let img = renderer.image { ctx in
-            ctx.cgContext.translateBy(x: 256, y: 256)
-
-            let rotation = Double.pi / Double(4)
-            let amount = 4
-            for _ in 0...amount {
-                ctx.cgContext.rotate(by: CGFloat(rotation * Double(amount)))
-                ctx.cgContext.addRect(CGRect(x: -64, y: 64, width: 128, height: 128))
-            }
-            ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
-            ctx.cgContext.strokePath()
-        }
+        let frameWidth = Double(512)
+        let frameHeight = Double(512)
         
-        let frame = renderer.image { ctx in
-            let rectangle = CGRect(x: 128, y: 128, width: 256, height: 256)
-
-            ctx.cgContext.setStrokeColor(UIColor.black.cgColor)
+        let unitLengthConstant = Double(16)
+        
+        let unitInX = frameWidth / unitLengthConstant
+        let unitInY = frameHeight / unitLengthConstant
+        
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: frameWidth, height: frameHeight))
+        
+        let star = renderer.image { ctx in
+            let pointA = CGPoint(x: 8 * unitInX, y: 3 * unitInY)
+            let pointB = CGPoint(x: 6.4 * unitInX, y: 7 * unitInY)
+            let pointC = CGPoint(x: 2 * unitInX, y: 7 * unitInY)
+            let pointD = CGPoint(x: 5.8 * unitInX, y: 9 * unitInY)
+            let pointE = CGPoint(x: 4 * unitInX, y: 13 * unitInY)
+            let pointF = CGPoint(x: 8.2 * unitInX, y: 10.5 * unitInY)
+            let pointG = CGPoint(x: 12 * unitInX, y: 13 * unitInY)
+            let pointH = CGPoint(x: 10.4 * unitInX, y: 9 * unitInY)
+            let pointI = CGPoint(x: 14 * unitInX, y: 7 * unitInY)
+            let pointJ = CGPoint(x: 9.7 * unitInX, y: 7 * unitInY)
+            
+            ctx.stroke(renderer.format.bounds)
+            ctx.cgContext.addLines(between: [pointA, pointB, pointC, pointD, pointE, pointF, pointG, pointH, pointI, pointJ, pointA])
+            ctx.cgContext.setStrokeColor(UIColor.yellow.cgColor)
+            ctx.cgContext.setFillColor(red: 255, green: 255, blue: 0, alpha: 1)
             ctx.cgContext.setLineWidth(5)
-
-            ctx.cgContext.addRect(rectangle)
-            ctx.cgContext.drawPath(using: .stroke)
-            img.draw(in: rectangle)
+            
+            ctx.cgContext.drawPath(using: .fillStroke)
         }
 
-        imageView.image = frame
+        imageView.image = star
     }
 }
 
