@@ -44,6 +44,13 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
+            vc.selectedImage = memeImages[indexPath.item]
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     @objc func importPicture() {
         let picker = UIImagePickerController()
         picker.allowsEditing = true

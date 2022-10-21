@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		765FDDF22903029900AE6F5D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765FDDF12903029900AE6F5D /* DetailViewController.swift */; };
 		76B5AA902900249000F8999B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B5AA8F2900249000F8999B /* AppDelegate.swift */; };
 		76B5AA922900249000F8999B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B5AA912900249000F8999B /* SceneDelegate.swift */; };
 		76B5AA942900249000F8999B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B5AA932900249000F8999B /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		765FDDF12903029900AE6F5D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		76B5AA8C2900249000F8999B /* Meme Generator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meme Generator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76B5AA8F2900249000F8999B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76B5AA912900249000F8999B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				76B5AA952900249000F8999B /* Main.storyboard */,
 				76B5AA982900249000F8999B /* Assets.xcassets */,
 				76B5AA9A2900249100F8999B /* LaunchScreen.storyboard */,
+				765FDDF12903029900AE6F5D /* DetailViewController.swift */,
 				76B5AA9D2900249100F8999B /* Info.plist */,
 			);
 			path = "Meme Generator";
@@ -141,6 +144,7 @@
 				76B5AA942900249000F8999B /* ViewController.swift in Sources */,
 				76B5AA902900249000F8999B /* AppDelegate.swift in Sources */,
 				76B5AA922900249000F8999B /* SceneDelegate.swift in Sources */,
+				765FDDF22903029900AE6F5D /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
