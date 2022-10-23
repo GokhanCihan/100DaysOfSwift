@@ -41,7 +41,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        drawStarEmoji()
+        drawPalette()
         
     }
 
@@ -182,6 +182,36 @@ class ViewController: UIViewController {
         }
 
         imageView.image = star
+    }
+    
+    func drawPalette() {
+        let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
+        
+        let degreeInRadian = CGFloat(Float.pi)/180
+        var radius = 256
+        var R = CGFloat(180)
+        var G = CGFloat(180)
+        var B = CGFloat(180)
+        var alpha = 0.004
+        var modAngle = 0
+        
+        let img = renderer.image { ctx in
+            for n in 1...10 {
+                for angle in 1...360 {
+                  
+                    ctx.cgContext.setFillColor(CGColor(red: CGFloat(1 / R), green: CGFloat(1 / G), blue: CGFloat(1 / B), alpha: alpha))
+                    ctx.cgContext.setLineWidth(0)
+
+                    ctx.cgContext.addArc(center: CGPoint(x: 256, y: 256), radius: CGFloat(radius), startAngle: 0 * degreeInRadian , endAngle: CGFloat(angle) * degreeInRadian, clockwise: false)
+                    ctx.cgContext.addLine(to: CGPoint(x: 256, y: 256))
+                    ctx.cgContext.drawPath(using: .fill)
+                    
+                }
+            }
+            
+        }
+
+        imageView.image = img
     }
 }
 
