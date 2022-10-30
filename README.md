@@ -41,3 +41,9 @@ incomplete
 - [x] challenge #1
 - [ ] challenge #2
 - [ ] challenge #3
+
+## Project 28
+
+- [x] challenge #1
+- [ ] challenge #2
+- [ ] challenge #3

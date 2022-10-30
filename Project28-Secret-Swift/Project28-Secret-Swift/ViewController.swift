@@ -11,9 +11,18 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet var secret: UITextView!
+    var password: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if KeychainWrapper.standard.string(forKey: "SecretMessagePassword") == nil {
+            createPassword()
+        }else {
+            while true {
+                verifyPassword()
+            }
+        }
         
         title = "Nothing to see here"
         
@@ -66,9 +75,13 @@ class ViewController: UIViewController {
                     if success {
                         self?.unlockSecretMessage()
                     } else {
-                        let ac = UIAlertController(title: "Authentication failed", message: "You could not be verified; please try again.", preferredStyle: .alert)
+                        let ac = UIAlertController(title: "Authentication failed", message: "You could not be verified; please continue with password.", preferredStyle: .alert)
                         ac.addAction(UIAlertAction(title: "OK", style: .default))
                         self?.present(ac, animated: true)
+                        
+                        if ((self?.verifyPassword()) != nil) {
+                            self?.unlockSecretMessage()
+                        }
                     }
                 }
             }
@@ -77,6 +90,41 @@ class ViewController: UIViewController {
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             self.present(ac, animated: true)
         }
+    }
+    
+    func createPassword() {
+        let ac = UIAlertController(title: "Create password", message: "This app asks you a password for each time it is started.", preferredStyle: .alert)
+        ac.addTextField()
+        
+        ac.addAction(UIAlertAction(title: "OK", style: .default) {
+            [weak ac] _ in
+            if let newPassword = ac?.textFields?[0].text {
+                KeychainWrapper.standard.set(newPassword, forKey: "SecretMessagePassword")
+            }
+        })
+        
+        self.present(ac, animated: true)
+    }
+    
+    func verifyPassword() -> Bool {
+        var isVerified = Bool()
+        
+        let ac = UIAlertController(title: "Password", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+        
+        ac.addAction(UIAlertAction(title: "OK", style: .default) {
+            [weak ac] _ in
+            if let input = ac?.textFields?[0].text {
+                if input == KeychainWrapper.standard.string(forKey: "SecretMessagePassword") {
+                    isVerified = true
+                } else{
+                    isVerified = false
+                }
+            }
+        })
+        self.present(ac, animated: true)
+        
+        return isVerified
     }
     
     @objc func adjustForKeyboard(notification: Notification) {
