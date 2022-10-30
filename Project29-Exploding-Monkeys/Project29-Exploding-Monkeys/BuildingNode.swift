@@ -28,10 +28,9 @@ class BuildingNode: SKSpriteNode {
     }
     
     func drawBuilding(size: CGSize) -> UIImage {
-        // 1
         let renderer = UIGraphicsImageRenderer(size: size)
         let img = renderer.image { ctx in
-            // 2
+
             let rectangle = CGRect(x: 0, y: 0, width: size.width, height: size.height)
             let color: UIColor
 
@@ -48,7 +47,6 @@ class BuildingNode: SKSpriteNode {
             ctx.cgContext.addRect(rectangle)
             ctx.cgContext.drawPath(using: .fill)
 
-            // 3
             let lightOnColor = UIColor(hue: 0.190, saturation: 0.67, brightness: 0.99, alpha: 1)
             let lightOffColor = UIColor(hue: 0, saturation: 0, brightness: 0.34, alpha: 1)
 
@@ -63,8 +61,6 @@ class BuildingNode: SKSpriteNode {
                     ctx.cgContext.fill(CGRect(x: col, y: row, width: 15, height: 20))
                 }
             }
-
-            // 4
         }
 
         return img
