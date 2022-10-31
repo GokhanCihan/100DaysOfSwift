@@ -55,10 +55,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 
         if firstNode.name == "banana" && secondNode.name == "player1" {
+            viewController.scorePoint2 += 1
             destroy(player: player1)
         }
 
         if firstNode.name == "banana" && secondNode.name == "player2" {
+            viewController.scorePoint1 += 1
             destroy(player: player2)
         }
     }
@@ -158,19 +160,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
 
         player.removeFromParent()
+        
         banana.removeFromParent()
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let newGame = GameScene(size: self.size)
-            newGame.viewController = self.viewController
-            self.viewController.currentGame = newGame
-
-            self.changePlayer()
-            newGame.currentPlayer = self.currentPlayer
-
-            let transition = SKTransition.doorway(withDuration: 1.5)
-            self.view?.presentScene(newGame, transition: transition)
+        
+        if viewController.scorePoint1 < 3 && viewController.scorePoint2 < 3 {
+            nextRound()
+        } else {
+            gameOver()
         }
+        
     }
     
     func changePlayer() {
@@ -212,5 +210,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func degInRad(degrees: Int) -> Double {
         return Double(degrees) * Double.pi / 180
+    }
+    
+    func nextRound() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            let newGame = GameScene(size: self.size)
+            newGame.viewController = self.viewController
+            self.viewController.currentGame = newGame
+
+            self.changePlayer()
+            newGame.currentPlayer = self.currentPlayer
+
+            let transition = SKTransition.doorway(withDuration: 1.5)
+            self.view?.presentScene(newGame, transition: transition)
+        }
+    }
+    
+    func gameOver() {
+        if viewController.scorePoint1 == 3 {
+            viewController.playerNumber.text = "PLAYER ONE WINS!!!"
+        }else {
+            viewController.playerNumber.text = "PLAYER TWO WINS!!!"
+        }
     }
 }

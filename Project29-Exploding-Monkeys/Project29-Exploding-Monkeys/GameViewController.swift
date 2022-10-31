@@ -20,10 +20,27 @@ class GameViewController: UIViewController {
     @IBOutlet var launchButton: UIButton!
     @IBOutlet var playerNumber: UILabel!
     
+    @IBOutlet var player1Score: UILabel!
+    @IBOutlet var player2Score: UILabel!
+    
+    var scorePoint1 = 0 {
+        didSet {
+            player1Score.text = String(scorePoint1)
+        }
+    }
+    var scorePoint2 = 0 {
+        didSet {
+            player2Score.text = String(scorePoint2)
+        }
+    }
+    
     var currentGame: GameScene!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        player1Score.text = "0"
+        player2Score.text = "0"
         
         angleChanged(angleSlider!)
         velocityChanged(velocitySlider!)
