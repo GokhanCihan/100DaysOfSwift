@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		763512E7290FB897009C0A94 /* hitPlayer.sks in Resources */ = {isa = PBXBuildFile; fileRef = 763512E5290FB897009C0A94 /* hitPlayer.sks */; };
+		763512E8290FB897009C0A94 /* hitBuilding.sks in Resources */ = {isa = PBXBuildFile; fileRef = 763512E6290FB897009C0A94 /* hitBuilding.sks */; };
 		76DCC935290E9E7C00287FBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DCC934290E9E7C00287FBF /* AppDelegate.swift */; };
 		76DCC937290E9E7C00287FBF /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 76DCC936290E9E7C00287FBF /* GameScene.sks */; };
 		76DCC93B290E9E7C00287FBF /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DCC93A290E9E7C00287FBF /* GameScene.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		763512E5290FB897009C0A94 /* hitPlayer.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = hitPlayer.sks; sourceTree = "<group>"; };
+		763512E6290FB897009C0A94 /* hitBuilding.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = hitBuilding.sks; sourceTree = "<group>"; };
 		76DCC931290E9E7C00287FBF /* Project29-Exploding-Monkeys.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project29-Exploding-Monkeys.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76DCC934290E9E7C00287FBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76DCC936290E9E7C00287FBF /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -67,6 +71,8 @@
 				76DCC93E290E9E7C00287FBF /* Main.storyboard */,
 				76DCC941290E9E7D00287FBF /* Assets.xcassets */,
 				76DCC943290E9E7D00287FBF /* LaunchScreen.storyboard */,
+				763512E6290FB897009C0A94 /* hitBuilding.sks */,
+				763512E5290FB897009C0A94 /* hitPlayer.sks */,
 			);
 			path = "Project29-Exploding-Monkeys";
 			sourceTree = "<group>";
@@ -131,8 +137,10 @@
 			files = (
 				76DCC940290E9E7C00287FBF /* Main.storyboard in Resources */,
 				76DCC937290E9E7C00287FBF /* GameScene.sks in Resources */,
+				763512E7290FB897009C0A94 /* hitPlayer.sks in Resources */,
 				76DCC942290E9E7D00287FBF /* Assets.xcassets in Resources */,
 				76DCC945290E9E7D00287FBF /* LaunchScreen.storyboard in Resources */,
+				763512E8290FB897009C0A94 /* hitBuilding.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
