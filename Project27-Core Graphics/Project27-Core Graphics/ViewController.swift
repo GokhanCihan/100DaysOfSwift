@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBAction func redrawTapped(_ sender: Any) {
         currentDrawType += 1
 
-        if currentDrawType > 5 {
+        if currentDrawType > 6 {
             currentDrawType = 0
         }
 
@@ -31,6 +31,8 @@ class ViewController: UIViewController {
             drawImageAndText()
         case 5:
             drawStarEmoji()
+        case 6:
+            drawTwin()
         default:
             break
         }
@@ -41,7 +43,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        drawPalette()
+        drawRectangle()
         
     }
 
@@ -184,34 +186,96 @@ class ViewController: UIViewController {
         imageView.image = star
     }
     
-    func drawPalette() {
+    func drawTwin() {
         let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
-        
-        let degreeInRadian = CGFloat(Float.pi)/180
-        var radius = 256
-        var R = CGFloat(180)
-        var G = CGFloat(180)
-        var B = CGFloat(180)
-        var alpha = 0.004
-        var modAngle = 0
-        
-        let img = renderer.image { ctx in
-            for n in 1...10 {
-                for angle in 1...360 {
-                  
-                    ctx.cgContext.setFillColor(CGColor(red: CGFloat(1 / R), green: CGFloat(1 / G), blue: CGFloat(1 / B), alpha: alpha))
-                    ctx.cgContext.setLineWidth(0)
 
-                    ctx.cgContext.addArc(center: CGPoint(x: 256, y: 256), radius: CGFloat(radius), startAngle: 0 * degreeInRadian , endAngle: CGFloat(angle) * degreeInRadian, clockwise: false)
-                    ctx.cgContext.addLine(to: CGPoint(x: 256, y: 256))
-                    ctx.cgContext.drawPath(using: .fill)
-                    
-                }
-            }
+        let pointA = CGPoint(x: 32, y: 128)
+        let pointB = CGPoint(x: 96, y: 128)
+        let pointC = CGPoint(x: 96, y: 256)
+        let pointD = CGPoint(x: 180, y: 126)
+        let pointE = CGPoint(x: 212, y: 256)
+        let pointF = CGPoint(x: 244, y: 126)
+        
+        
+        let horizantalPoints = [pointA, pointB]
+        let verticalPoints = [pointB, pointC]
+        let rightDiagonalPoints = [pointD, pointE]
+        let leftDiagonalPoints = [pointE, pointF]
+        
+        
+        let horizontalLine = drawLine(renderer, points: horizantalPoints)
+        let verticalLine = drawLine(renderer, points: verticalPoints)
+        let rightDiagonalLine = drawLine(renderer, points: rightDiagonalPoints)
+        let leftDiagonalLine = drawLine(renderer, points: leftDiagonalPoints)
+        
+        let twin = renderer.image { ctx in
+            
+            //draws T
+            horizontalLine.draw(in: movedRect(by: 32))
+            horizontalLine.draw(in: movedRect(by: 96))
+            verticalLine.draw(in: movedRect(by: 32))
+            
+            //draws W
+            rightDiagonalLine.draw(in: movedRect(by: 32))
+            leftDiagonalLine.draw(in: movedRect(by: 32))
+            rightDiagonalLine.draw(in: movedRect(by: 96))
+            leftDiagonalLine.draw(in: movedRect(by: 96))
+            
+            //draws I
+            verticalLine.draw(in: movedRect(by: 264))
+            
+            //draws N
+            verticalLine.draw(in: movedRect(by: 286))
+            rightDiagonalLine.draw(in: movedRect(by: 202))
+            verticalLine.draw(in: movedRect(by: 318))
             
         }
-
-        imageView.image = img
+        
+        
+        imageView.image = twin
+        
+    }
+    
+    func drawLine(_ renderer: UIGraphicsImageRenderer, points: [CGPoint]) -> UIImage {
+        let img = renderer.image { ctx in
+                ctx.cgContext.addLines(between: points)
+        
+                ctx.cgContext.setLineWidth(3)
+                ctx.cgContext.strokePath()
+        }
+        
+        return img
+    }
+    
+    func movedRect(by points: CGFloat) -> CGRect {
+        let rect = CGRect(x: 0, y: 0, width: 512, height: 512)
+        let newRect = CGRect(x: rect.minX + points, y: rect.minY, width: rect.width, height: rect.height)
+        return newRect
     }
 }
+
+//        CODE JUST FOR FUN
+//        let degreeInRadian = CGFloat(Float.pi)/180
+//        var radius = 256
+//        var R = CGFloat(180)
+//        var G = CGFloat(180)
+//        var B = CGFloat(180)
+//        var alpha = 0.004
+//        var modAngle = 0
+//
+//        let img = renderer.image { ctx in
+//            for n in 1...10 {
+//                for angle in 1...360 {
+//
+//                    ctx.cgContext.setFillColor(CGColor(red: CGFloat(1 / R), green: CGFloat(1 / G), blue: CGFloat(1 / B), alpha: alpha))
+//                    ctx.cgContext.setLineWidth(0)
+//
+//                    ctx.cgContext.addArc(center: CGPoint(x: 256, y: 256), radius: CGFloat(radius), startAngle: 0 * degreeInRadian , endAngle: CGFloat(angle) * degreeInRadian, clockwise: false)
+//                    ctx.cgContext.addLine(to: CGPoint(x: 256, y: 256))
+//                    ctx.cgContext.drawPath(using: .fill)
+//
+//                }
+//            }
+//
+//        }
 
