@@ -22,6 +22,10 @@ class GameViewController: UIViewController {
     
     @IBOutlet var player1Score: UILabel!
     @IBOutlet var player2Score: UILabel!
+
+    @IBOutlet var windLabel: UILabel!
+    
+    var windVelocity = 0
     
     var scorePoint1 = 0 {
         didSet {
@@ -41,6 +45,7 @@ class GameViewController: UIViewController {
         
         player1Score.text = "0"
         player2Score.text = "0"
+        windLabel.text = "no wind"
         
         angleChanged(angleSlider!)
         velocityChanged(velocitySlider!)
@@ -110,6 +115,17 @@ class GameViewController: UIViewController {
         velocityLabel.isHidden = false
 
         launchButton.isHidden = false
+    }
+    
+    func createWind(){
+        windVelocity = Int.random(in: -150...150)
+        if windVelocity == 0 {
+            windVelocity = 1
+        } else if windVelocity < 0 {
+            windLabel.text = "<-- wind"
+        }else {
+            windLabel.text = "wind -->"
+        }
     }
     
 }

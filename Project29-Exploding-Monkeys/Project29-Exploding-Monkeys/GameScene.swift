@@ -136,7 +136,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let sequence = SKAction.sequence([raiseArm, pause, lowerArm])
             player1.run(sequence)
 
-            let impulse = CGVector(dx: cos(radians) * speed, dy: sin(radians) * speed)
+            let impulse = CGVector(dx: cos(radians) * (speed + Double(viewController.windVelocity) / 10.0), dy: sin(radians) * speed)
             banana.physicsBody?.applyImpulse(impulse)
         } else {
             banana.position = CGPoint(x: player2.position.x + 30, y: player2.position.y + 40)
@@ -148,7 +148,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let sequence = SKAction.sequence([raiseArm, pause, lowerArm])
             player2.run(sequence)
 
-            let impulse = CGVector(dx: cos(radians) * -speed, dy: sin(radians) * speed)
+            let impulse = CGVector(dx: cos(radians) * -(speed + Double(viewController.windVelocity) / 10.0), dy: sin(radians) * speed)
             banana.physicsBody?.applyImpulse(impulse)
         }
     }
@@ -220,6 +220,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
             self.changePlayer()
             newGame.currentPlayer = self.currentPlayer
+            
+            self.viewController.createWind()
 
             let transition = SKTransition.doorway(withDuration: 1.5)
             self.view?.presentScene(newGame, transition: transition)
