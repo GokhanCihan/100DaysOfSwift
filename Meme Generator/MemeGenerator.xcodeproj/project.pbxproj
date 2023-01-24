@@ -18,7 +18,7 @@
 
 /* Begin PBXFileReference section */
 		765FDDF12903029900AE6F5D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		76B5AA8C2900249000F8999B /* Meme Generator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meme Generator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		76B5AA8C2900249000F8999B /* MemeGenerator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeGenerator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76B5AA8F2900249000F8999B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76B5AA912900249000F8999B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		76B5AA932900249000F8999B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		76B5AA8D2900249000F8999B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				76B5AA8C2900249000F8999B /* Meme Generator.app */,
+				76B5AA8C2900249000F8999B /* MemeGenerator.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,9 +73,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		76B5AA8B2900249000F8999B /* Meme Generator */ = {
+		76B5AA8B2900249000F8999B /* MemeGenerator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 76B5AAA02900249100F8999B /* Build configuration list for PBXNativeTarget "Meme Generator" */;
+			buildConfigurationList = 76B5AAA02900249100F8999B /* Build configuration list for PBXNativeTarget "MemeGenerator" */;
 			buildPhases = (
 				76B5AA882900249000F8999B /* Sources */,
 				76B5AA892900249000F8999B /* Frameworks */,
@@ -85,9 +85,9 @@
 			);
 			dependencies = (
 			);
-			name = "Meme Generator";
+			name = MemeGenerator;
 			productName = "Meme Generator";
-			productReference = 76B5AA8C2900249000F8999B /* Meme Generator.app */;
+			productReference = 76B5AA8C2900249000F8999B /* MemeGenerator.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -105,7 +105,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 76B5AA872900249000F8999B /* Build configuration list for PBXProject "Meme Generator" */;
+			buildConfigurationList = 76B5AA872900249000F8999B /* Build configuration list for PBXProject "MemeGenerator" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -118,7 +118,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				76B5AA8B2900249000F8999B /* Meme Generator */,
+				76B5AA8B2900249000F8999B /* MemeGenerator */,
 			);
 		};
 /* End PBXProject section */
@@ -343,7 +343,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		76B5AA872900249000F8999B /* Build configuration list for PBXProject "Meme Generator" */ = {
+		76B5AA872900249000F8999B /* Build configuration list for PBXProject "MemeGenerator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76B5AA9E2900249100F8999B /* Debug */,
@@ -352,7 +352,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		76B5AAA02900249100F8999B /* Build configuration list for PBXNativeTarget "Meme Generator" */ = {
+		76B5AAA02900249100F8999B /* Build configuration list for PBXNativeTarget "MemeGenerator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76B5AAA12900249100F8999B /* Debug */,
