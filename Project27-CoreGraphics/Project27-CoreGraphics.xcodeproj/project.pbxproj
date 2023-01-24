@@ -44,7 +44,7 @@
 		76D972BC28F5E29300BEB4CD = {
 			isa = PBXGroup;
 			children = (
-				76D972C728F5E29300BEB4CD /* Project27-Core Graphics */,
+				76D972C728F5E29300BEB4CD /* Project27-CoreGraphics */,
 				76D972C628F5E29300BEB4CD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,7 +57,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		76D972C728F5E29300BEB4CD /* Project27-Core Graphics */ = {
+		76D972C728F5E29300BEB4CD /* Project27-CoreGraphics */ = {
 			isa = PBXGroup;
 			children = (
 				76D972C828F5E29300BEB4CD /* AppDelegate.swift */,
@@ -70,7 +70,7 @@
 				76D972DC28F5E30800BEB4CD /* mouse.png */,
 				76D972DD28F5E30800BEB4CD /* mouse@2x.png */,
 			);
-			path = "Project27-Core Graphics";
+			path = "Project27-CoreGraphics";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,7 +297,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 89L9PSZ495;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Project27-Core Graphics/Info.plist";
+				INFOPLIST_FILE = "Project27-CoreGraphics/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -328,7 +328,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 89L9PSZ495;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Project27-Core Graphics/Info.plist";
+				INFOPLIST_FILE = "Project27-CoreGraphics/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
