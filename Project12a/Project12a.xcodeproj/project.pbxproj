@@ -44,7 +44,7 @@
 		76F244DB2882D3E500A8ED5A = {
 			isa = PBXGroup;
 			children = (
-				76F244E62882D3E500A8ED5A /* Project10 */,
+				76F244E62882D3E500A8ED5A /* Project10(modified) */,
 				76F244E52882D3E500A8ED5A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -57,7 +57,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		76F244E62882D3E500A8ED5A /* Project10 */ = {
+		76F244E62882D3E500A8ED5A /* Project10(modified) */ = {
 			isa = PBXGroup;
 			children = (
 				76AF22A92883F098005CB628 /* Person.swift */,
@@ -70,7 +70,7 @@
 				76F244F22882D3E600A8ED5A /* LaunchScreen.storyboard */,
 				76F244F52882D3E600A8ED5A /* Info.plist */,
 			);
-			path = Project10;
+			path = "Project10(modified)";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
