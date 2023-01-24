@@ -126,7 +126,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 761D155328D8E1F6003A0640 /* Build configuration list for PBXProject "Notes App" */;
+			buildConfigurationList = 761D155328D8E1F6003A0640 /* Build configuration list for PBXProject "NotesApp" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -371,7 +371,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		761D155328D8E1F6003A0640 /* Build configuration list for PBXProject "Notes App" */ = {
+		761D155328D8E1F6003A0640 /* Build configuration list for PBXProject "NotesApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				761D156A28D8E1F6003A0640 /* Debug */,
