@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		76D972C528F5E29300BEB4CD /* Project27-Core Graphics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project27-Core Graphics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		76D972C528F5E29300BEB4CD /* Project27-CoreGraphics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project27-CoreGraphics.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		76D972C828F5E29300BEB4CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76D972CA28F5E29300BEB4CD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		76D972CC28F5E29300BEB4CD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +52,7 @@
 		76D972C628F5E29300BEB4CD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				76D972C528F5E29300BEB4CD /* Project27-Core Graphics.app */,
+				76D972C528F5E29300BEB4CD /* Project27-CoreGraphics.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,9 +76,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		76D972C428F5E29300BEB4CD /* Project27-Core Graphics */ = {
+		76D972C428F5E29300BEB4CD /* Project27-CoreGraphics */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 76D972D928F5E29400BEB4CD /* Build configuration list for PBXNativeTarget "Project27-Core Graphics" */;
+			buildConfigurationList = 76D972D928F5E29400BEB4CD /* Build configuration list for PBXNativeTarget "Project27-CoreGraphics" */;
 			buildPhases = (
 				76D972C128F5E29300BEB4CD /* Sources */,
 				76D972C228F5E29300BEB4CD /* Frameworks */,
@@ -88,9 +88,9 @@
 			);
 			dependencies = (
 			);
-			name = "Project27-Core Graphics";
+			name = "Project27-CoreGraphics";
 			productName = "Project27-Core Graphics";
-			productReference = 76D972C528F5E29300BEB4CD /* Project27-Core Graphics.app */;
+			productReference = 76D972C528F5E29300BEB4CD /* Project27-CoreGraphics.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -108,7 +108,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 76D972C028F5E29300BEB4CD /* Build configuration list for PBXProject "Project27-Core Graphics" */;
+			buildConfigurationList = 76D972C028F5E29300BEB4CD /* Build configuration list for PBXProject "Project27-CoreGraphics" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -121,7 +121,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				76D972C428F5E29300BEB4CD /* Project27-Core Graphics */,
+				76D972C428F5E29300BEB4CD /* Project27-CoreGraphics */,
 			);
 		};
 /* End PBXProject section */
@@ -353,7 +353,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		76D972C028F5E29300BEB4CD /* Build configuration list for PBXProject "Project27-Core Graphics" */ = {
+		76D972C028F5E29300BEB4CD /* Build configuration list for PBXProject "Project27-CoreGraphics" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76D972D728F5E29400BEB4CD /* Debug */,
@@ -362,7 +362,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		76D972D928F5E29400BEB4CD /* Build configuration list for PBXNativeTarget "Project27-Core Graphics" */ = {
+		76D972D928F5E29400BEB4CD /* Build configuration list for PBXNativeTarget "Project27-CoreGraphics" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76D972DA28F5E29400BEB4CD /* Debug */,
