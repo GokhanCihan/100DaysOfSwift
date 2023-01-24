@@ -20,7 +20,7 @@
 /* Begin PBXFileReference section */
 		765EFED82891880800933FBE /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		76A0AD4F28927238008D2DF6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		76CA19F728916004009DEC2F /* milestone P10-12.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "milestone P10-12.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		76CA19F728916004009DEC2F /* PhotoCaption.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoCaption.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CA19FA28916004009DEC2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76CA19FC28916004009DEC2F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		76CA19FE28916004009DEC2F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 		76CA19EE28916004009DEC2F = {
 			isa = PBXGroup;
 			children = (
-				76CA19F928916004009DEC2F /* milestone P10-12 */,
+				76CA19F928916004009DEC2F /* PhotoCaption */,
 				76CA19F828916004009DEC2F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,12 +52,12 @@
 		76CA19F828916004009DEC2F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				76CA19F728916004009DEC2F /* milestone P10-12.app */,
+				76CA19F728916004009DEC2F /* PhotoCaption.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		76CA19F928916004009DEC2F /* milestone P10-12 */ = {
+		76CA19F928916004009DEC2F /* PhotoCaption */ = {
 			isa = PBXGroup;
 			children = (
 				76CA19FA28916004009DEC2F /* AppDelegate.swift */,
@@ -70,15 +70,15 @@
 				76CA1A0528916006009DEC2F /* LaunchScreen.storyboard */,
 				76CA1A0828916006009DEC2F /* Info.plist */,
 			);
-			path = "milestone P10-12";
+			path = PhotoCaption;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		76CA19F628916004009DEC2F /* milestone P10-12 */ = {
+		76CA19F628916004009DEC2F /* PhotoCaption */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 76CA1A0B28916006009DEC2F /* Build configuration list for PBXNativeTarget "milestone P10-12" */;
+			buildConfigurationList = 76CA1A0B28916006009DEC2F /* Build configuration list for PBXNativeTarget "PhotoCaption" */;
 			buildPhases = (
 				76CA19F328916004009DEC2F /* Sources */,
 				76CA19F428916004009DEC2F /* Frameworks */,
@@ -88,9 +88,9 @@
 			);
 			dependencies = (
 			);
-			name = "milestone P10-12";
+			name = PhotoCaption;
 			productName = "milestone P10-12";
-			productReference = 76CA19F728916004009DEC2F /* milestone P10-12.app */;
+			productReference = 76CA19F728916004009DEC2F /* PhotoCaption.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -108,7 +108,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 76CA19F228916004009DEC2F /* Build configuration list for PBXProject "Photo Caption" */;
+			buildConfigurationList = 76CA19F228916004009DEC2F /* Build configuration list for PBXProject "PhotoCaption" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -121,7 +121,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				76CA19F628916004009DEC2F /* milestone P10-12 */,
+				76CA19F628916004009DEC2F /* PhotoCaption */,
 			);
 		};
 /* End PBXProject section */
@@ -347,7 +347,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		76CA19F228916004009DEC2F /* Build configuration list for PBXProject "Photo Caption" */ = {
+		76CA19F228916004009DEC2F /* Build configuration list for PBXProject "PhotoCaption" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76CA1A0928916006009DEC2F /* Debug */,
@@ -356,7 +356,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		76CA1A0B28916006009DEC2F /* Build configuration list for PBXNativeTarget "milestone P10-12" */ = {
+		76CA1A0B28916006009DEC2F /* Build configuration list for PBXNativeTarget "PhotoCaption" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76CA1A0C28916006009DEC2F /* Debug */,
