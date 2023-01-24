@@ -42,7 +42,7 @@
 		76B5AA832900249000F8999B = {
 			isa = PBXGroup;
 			children = (
-				76B5AA8E2900249000F8999B /* Meme Generator */,
+				76B5AA8E2900249000F8999B /* MemeGenerator */,
 				76B5AA8D2900249000F8999B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,7 +55,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		76B5AA8E2900249000F8999B /* Meme Generator */ = {
+		76B5AA8E2900249000F8999B /* MemeGenerator */ = {
 			isa = PBXGroup;
 			children = (
 				76B5AA8F2900249000F8999B /* AppDelegate.swift */,
@@ -67,7 +67,7 @@
 				765FDDF12903029900AE6F5D /* DetailViewController.swift */,
 				76B5AA9D2900249100F8999B /* Info.plist */,
 			);
-			path = "Meme Generator";
+			path = MemeGenerator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
