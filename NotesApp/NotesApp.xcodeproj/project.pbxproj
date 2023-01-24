@@ -26,7 +26,7 @@
 /* Begin PBXFileReference section */
 		76154B9C28DE3EC5001C4F4E /* FolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCell.swift; sourceTree = "<group>"; };
 		76154B9D28DE3EC5001C4F4E /* FolderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FolderCell.xib; sourceTree = "<group>"; };
-		761D155828D8E1F6003A0640 /* Notes App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notes App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		761D155828D8E1F6003A0640 /* NotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		761D155B28D8E1F6003A0640 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		761D155D28D8E1F6003A0640 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		761D155F28D8E1F6003A0640 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 		761D155928D8E1F6003A0640 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				761D155828D8E1F6003A0640 /* Notes App.app */,
+				761D155828D8E1F6003A0640 /* NotesApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -94,9 +94,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		761D155728D8E1F6003A0640 /* Notes App */ = {
+		761D155728D8E1F6003A0640 /* NotesApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 761D156C28D8E1F6003A0640 /* Build configuration list for PBXNativeTarget "Notes App" */;
+			buildConfigurationList = 761D156C28D8E1F6003A0640 /* Build configuration list for PBXNativeTarget "NotesApp" */;
 			buildPhases = (
 				761D155428D8E1F6003A0640 /* Sources */,
 				761D155528D8E1F6003A0640 /* Frameworks */,
@@ -106,9 +106,9 @@
 			);
 			dependencies = (
 			);
-			name = "Notes App";
+			name = NotesApp;
 			productName = "Notes App";
-			productReference = 761D155828D8E1F6003A0640 /* Notes App.app */;
+			productReference = 761D155828D8E1F6003A0640 /* NotesApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -139,7 +139,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				761D155728D8E1F6003A0640 /* Notes App */,
+				761D155728D8E1F6003A0640 /* NotesApp */,
 			);
 		};
 /* End PBXProject section */
@@ -321,7 +321,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 89L9PSZ495;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Notes App/Info.plist";
+				INFOPLIST_FILE = NotesApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotesApp;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -332,7 +333,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Notes-App";
+				PRODUCT_BUNDLE_IDENTIFIER = com.100.NotesApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -349,7 +350,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 89L9PSZ495;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Notes App/Info.plist";
+				INFOPLIST_FILE = NotesApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotesApp;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -360,7 +362,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Notes-App";
+				PRODUCT_BUNDLE_IDENTIFIER = com.100.NotesApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -380,7 +382,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		761D156C28D8E1F6003A0640 /* Build configuration list for PBXNativeTarget "Notes App" */ = {
+		761D156C28D8E1F6003A0640 /* Build configuration list for PBXNativeTarget "NotesApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				761D156D28D8E1F6003A0640 /* Debug */,
