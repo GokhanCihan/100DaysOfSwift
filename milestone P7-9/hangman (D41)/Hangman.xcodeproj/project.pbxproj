@@ -18,7 +18,7 @@
 
 /* Begin PBXFileReference section */
 		7605B5342880340A00E50390 /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
-		76CA658028800F4500FAC642 /* hangman (D41).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hangman (D41).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		76CA658028800F4500FAC642 /* Hangman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hangman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76CA658328800F4500FAC642 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76CA658528800F4500FAC642 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		76CA658728800F4500FAC642 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,7 +42,7 @@
 		76CA657728800F4500FAC642 = {
 			isa = PBXGroup;
 			children = (
-				76CA658228800F4500FAC642 /* hangman (D41) */,
+				76CA658228800F4500FAC642 /* Hangman */,
 				76CA658128800F4500FAC642 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,12 +50,12 @@
 		76CA658128800F4500FAC642 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				76CA658028800F4500FAC642 /* hangman (D41).app */,
+				76CA658028800F4500FAC642 /* Hangman.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		76CA658228800F4500FAC642 /* hangman (D41) */ = {
+		76CA658228800F4500FAC642 /* Hangman */ = {
 			isa = PBXGroup;
 			children = (
 				76CA658328800F4500FAC642 /* AppDelegate.swift */,
@@ -67,15 +67,15 @@
 				76CA659128800F4600FAC642 /* Info.plist */,
 				7605B5342880340A00E50390 /* words.txt */,
 			);
-			path = "hangman (D41)";
+			path = Hangman;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		76CA657F28800F4500FAC642 /* hangman (D41) */ = {
+		76CA657F28800F4500FAC642 /* Hangman */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 76CA659428800F4600FAC642 /* Build configuration list for PBXNativeTarget "hangman (D41)" */;
+			buildConfigurationList = 76CA659428800F4600FAC642 /* Build configuration list for PBXNativeTarget "Hangman" */;
 			buildPhases = (
 				76CA657C28800F4500FAC642 /* Sources */,
 				76CA657D28800F4500FAC642 /* Frameworks */,
@@ -85,9 +85,9 @@
 			);
 			dependencies = (
 			);
-			name = "hangman (D41)";
+			name = Hangman;
 			productName = "hangman (D41)";
-			productReference = 76CA658028800F4500FAC642 /* hangman (D41).app */;
+			productReference = 76CA658028800F4500FAC642 /* Hangman.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -118,7 +118,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				76CA657F28800F4500FAC642 /* hangman (D41) */,
+				76CA657F28800F4500FAC642 /* Hangman */,
 			);
 		};
 /* End PBXProject section */
@@ -352,7 +352,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		76CA659428800F4600FAC642 /* Build configuration list for PBXNativeTarget "hangman (D41)" */ = {
+		76CA659428800F4600FAC642 /* Build configuration list for PBXNativeTarget "Hangman" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76CA659528800F4600FAC642 /* Debug */,
