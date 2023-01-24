@@ -105,7 +105,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 76CA657B28800F4500FAC642 /* Build configuration list for PBXProject "hangman (D41)" */;
+			buildConfigurationList = 76CA657B28800F4500FAC642 /* Build configuration list for PBXProject "Hangman" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -343,7 +343,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		76CA657B28800F4500FAC642 /* Build configuration list for PBXProject "hangman (D41)" */ = {
+		76CA657B28800F4500FAC642 /* Build configuration list for PBXProject "Hangman" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				76CA659228800F4600FAC642 /* Debug */,
