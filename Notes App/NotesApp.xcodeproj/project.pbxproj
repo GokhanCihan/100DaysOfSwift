@@ -56,7 +56,7 @@
 		761D154F28D8E1F6003A0640 = {
 			isa = PBXGroup;
 			children = (
-				761D155A28D8E1F6003A0640 /* Notes App */,
+				761D155A28D8E1F6003A0640 /* NotesApp */,
 				761D155928D8E1F6003A0640 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,7 +69,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		761D155A28D8E1F6003A0640 /* Notes App */ = {
+		761D155A28D8E1F6003A0640 /* NotesApp */ = {
 			isa = PBXGroup;
 			children = (
 				761D155B28D8E1F6003A0640 /* AppDelegate.swift */,
@@ -88,7 +88,7 @@
 				76E9F32028DBC55400A60D25 /* NoteCell.xib */,
 				761D156F28D8E632003A0640 /* DetailViewController.swift */,
 			);
-			path = "Notes App";
+			path = NotesApp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
