@@ -1,3 +1,5 @@
+* Project files that are moved or renamed need adjustments on build settings to work properly.
+
 # Missing Parts
 
 ## Project 16
