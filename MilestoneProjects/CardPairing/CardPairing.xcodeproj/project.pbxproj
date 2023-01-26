@@ -14,6 +14,7 @@
 		764BB70F2981DDD400076203 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 764BB70E2981DDD400076203 /* Assets.xcassets */; };
 		764BB7122981DDD400076203 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 764BB7102981DDD400076203 /* LaunchScreen.storyboard */; };
 		76EC0F9C2982CED600FB1266 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EC0F9B2982CED600FB1266 /* Card.swift */; };
+		76EC0F9E2982D4C800FB1266 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EC0F9D2982D4C800FB1266 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		764BB7112981DDD400076203 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		764BB7132981DDD400076203 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76EC0F9B2982CED600FB1266 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		76EC0F9D2982D4C800FB1266 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				764BB7052981DDD400076203 /* AppDelegate.swift */,
 				764BB7072981DDD400076203 /* SceneDelegate.swift */,
 				764BB7092981DDD400076203 /* ViewController.swift */,
+				76EC0F9D2982D4C800FB1266 /* CardView.swift */,
 				76EC0F9B2982CED600FB1266 /* Card.swift */,
 				764BB70B2981DDD400076203 /* Main.storyboard */,
 				764BB70E2981DDD400076203 /* Assets.xcassets */,
@@ -145,6 +148,7 @@
 				764BB7062981DDD400076203 /* AppDelegate.swift in Sources */,
 				764BB7082981DDD400076203 /* SceneDelegate.swift in Sources */,
 				76EC0F9C2982CED600FB1266 /* Card.swift in Sources */,
+				76EC0F9E2982D4C800FB1266 /* CardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
