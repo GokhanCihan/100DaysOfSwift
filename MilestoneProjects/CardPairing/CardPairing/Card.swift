@@ -8,6 +8,8 @@
 import Foundation
 
 struct Card {
-    var name: String
-    var stringForURL: String
+    let id = UUID()
+    var reading: String
+    var meaningEN: String
+    var stringForImageURL: String    
 }
