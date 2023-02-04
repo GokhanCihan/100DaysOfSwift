@@ -27,6 +27,25 @@ class CardView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.isUserInteractionEnabled = true
     }
     
+}
+extension CardView {
+    func configureView() {
+        kanjiImageView.translatesAutoresizingMaskIntoConstraints = false
+        kanjiImageView.layer.borderColor = UIColor.black.cgColor
+        kanjiImageView.layer.borderWidth = 1
+        
+        self.addSubview(kanjiImageView)
+        
+        if let superview = self.superview {
+            NSLayoutConstraint.activate([
+                kanjiImageView.topAnchor.constraint(equalTo: superview.topAnchor),
+                kanjiImageView.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+                kanjiImageView.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
+                kanjiImageView.bottomAnchor.constraint(equalTo: superview.bottomAnchor),
+            ])
+        }
+    }
 }
