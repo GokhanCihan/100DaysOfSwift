@@ -12,13 +12,15 @@ enum Side {
     case back
 }
 class CardView: UIView {
-    var side = Side.front
+    var side = Side.back
     
-    //front side of the card view
-    var kanji = UIImageView()
+    //front side of the card
+    var kanjiImageView = UIImageView()
     var reading = UILabel()
     var meaningEN = UILabel()
     
+    //back side of the card
+    var backSide = UIImage()
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
