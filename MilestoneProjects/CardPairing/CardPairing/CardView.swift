@@ -16,8 +16,7 @@ class CardView: UIView {
     
     //front side of the card
     var kanjiImageView = UIImageView()
-    var reading = UILabel()
-    var meaningEN = UILabel()
+    var name = UILabel()
     
     //back side of the card
     var backSide = UIImage()
@@ -33,37 +32,28 @@ class CardView: UIView {
 }
 extension CardView {
     func configureView() {
+        self.layer.borderColor = UIColor.gray.cgColor
+        self.layer.borderWidth = 1
+        
         kanjiImageView.translatesAutoresizingMaskIntoConstraints = false
-        kanjiImageView.layer.borderColor = UIColor.green.cgColor
-        kanjiImageView.layer.borderWidth = 4
         self.addSubview(kanjiImageView)
         
-        reading.translatesAutoresizingMaskIntoConstraints = false
-        reading.layer.borderColor = UIColor.red.cgColor
-        reading.layer.borderWidth = 3
-        self.addSubview(reading)
-        
-        meaningEN.translatesAutoresizingMaskIntoConstraints = false
-        meaningEN.layer.borderColor = UIColor.blue.cgColor
-        meaningEN.layer.borderWidth = 3
-        self.addSubview(meaningEN)
+        name.translatesAutoresizingMaskIntoConstraints = false
+        name.adjustsFontSizeToFitWidth = true
+        name.textAlignment = .center
+        self.addSubview(name)
         
         // subviews' constraints
         NSLayoutConstraint.activate([
             kanjiImageView.topAnchor.constraint(equalTo: self.topAnchor),
             kanjiImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             kanjiImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            kanjiImageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.8),
+            kanjiImageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.75),
             
-            reading.topAnchor.constraint(equalTo: kanjiImageView.bottomAnchor),
-            reading.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            reading.widthAnchor.constraint(equalTo: self.widthAnchor),
-            reading.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.1),
-            
-            meaningEN.topAnchor.constraint(equalTo: reading.bottomAnchor),
-            meaningEN.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            meaningEN.widthAnchor.constraint(equalTo: self.widthAnchor),
-            meaningEN.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.1)
+            name.topAnchor.constraint(equalTo: kanjiImageView.bottomAnchor),
+            name.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            name.widthAnchor.constraint(equalTo: self.widthAnchor),
+            name.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.25),
         ])
     }
 }
