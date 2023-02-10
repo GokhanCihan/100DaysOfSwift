@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     let amountOfCards = 16
-    var cards = [Card]()
+    var pairsArray = [String]()
     var cardViews = [CardView]()
         
     override func viewDidLoad() {
@@ -20,15 +20,11 @@ class ViewController: UIViewController {
 
     func configureData() {
         for _ in 0..<self.amountOfCards {
-            let card = Card(
-                level: .N5,
-                reading: "READING",
-                meaningEN: "MEANING",
-                stringForImageURL: "URLSTRING"
-            )
+            let pairs = Pairs(pairOne: "pairOne", pairTwo: "pairTwo")
+            self.pairsArray.append(pairs.pairOne)
+            self.pairsArray.append(pairs.pairTwo)
+            
             let cardView = CardView()
-            cardView.name.text = card.reading
-            self.cards.append(card)
             self.cardViews.append(cardView)
         }
     }
