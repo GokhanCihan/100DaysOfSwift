@@ -12,7 +12,8 @@ enum Side {
     case back
 }
 class CardView: UIView {
-    var side = Side.back
+    var side = Side.front
+    var pairsID: UUID?
     
     //front side of the card
     var frontSideView = UILabel()
