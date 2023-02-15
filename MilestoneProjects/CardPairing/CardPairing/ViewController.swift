@@ -8,70 +8,83 @@
 import UIKit
 
 class ViewController: UIViewController {
-    let amountOfCards = 16
-    let backSideImage = UIImage()
-    var pairsArray = [Pairs]()
-    var cardViews = [CardView]()
-    
-        
+    var verticalStackView = UIStackView()
+
+    var pairArray = [Pair]()
+    var cards = [CardView]()
+
+    let numberOfPairs = 8
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureData()
         self.configureLayout()
     }
-    
-    func configureData() {
-        for _ in 0..<self.amountOfCards {
-            let pairs = Pairs(pairOne: "円", pairTwo: "en")
-            self.pairsArray.append(pairs)
-        }
-        
-        //distribute pairs
-        for index in 0..<self.amountOfCards {
-            let cardView = CardView()
-            cardView.pairsID = pairsArray[index].id
-            
-            if index % 2 == 0 {
-                cardView.frontSideView.text = pairsArray[index].pairOne
-            }else {
-                cardView.frontSideView.text = pairsArray[index].pairTwo
-            }
-            self.cardViews.append(cardView)
-        }
-    }
-    
-    func configureLayout() {
-        let viewWidthUsed = self.view.safeAreaLayoutGuide.layoutFrame.width - 100
-        let viewHeightUsed = self.view.safeAreaLayoutGuide.layoutFrame.height - 100
-        
-        let cardWidth = 0.2 * viewWidthUsed
-        let cardHeight = 0.2 * viewHeightUsed
-        
-        let marginFromSibling = CGPoint(x: 0.25 * cardWidth, y: 0.25 * cardHeight)
-        
-        // How many points away from screen edge the first line of cards should be
-        let marginFromSafeArea = CGPoint(
-            x: (viewWidthUsed - 4 * cardWidth - 3 * marginFromSibling.x) / 2 + 50,
-            y: (viewHeightUsed - 4 * cardHeight - 3 * marginFromSibling.y) / 2 + 50
-        )
 
-        self.cardViews.shuffle()
-        
-        //place cards with the specified arrangement 
-        for row in 0..<4{
-            for column in 0..<4{
-                let index = 4 * row + column
-                cardViews[index].frame = CGRect(
-                    x: Int(marginFromSafeArea.x + CGFloat(column) * (cardWidth + marginFromSibling.x)),
-                    y: Int(marginFromSafeArea.y + CGFloat(row) * (cardHeight + marginFromSibling.y)),
-                    width: Int(cardWidth),
-                    height: Int(cardHeight)
-                )
-                
-                self.view.addSubview(cardViews[index])
-                self.cardViews[index].configureView()
+    func configureData() {
+        for _ in 0..<self.numberOfPairs {
+            let pairs = Pairs(Pair("円"), Pair("en"))
+
+            self.pairArray.append(pairs.pairOne)
+            self.pairArray.append(pairs.pairTwo)
+        }
+
+        self.pairArray.shuffle()
+    }
+
+    func configureLayout() {
+        verticalStackView.layer.backgroundColor = UIColor.secondarySystemBackground.cgColor
+        verticalStackView.translatesAutoresizingMaskIntoConstraints = false
+        verticalStackView.distribution = .equalCentering
+        verticalStackView.alignment = .center
+        verticalStackView.axis = .vertical
+        self.view.addSubview(verticalStackView)
+
+        // Create cards
+        for pair in self.pairArray {
+            let card = CardView()
+
+            card.frontSideView.text = pair.value
+            cards.append(card)
+        }
+
+        // Create rows
+        for column in 0..<(cards.count / 4) {
+            let horizontalStack = UIStackView()
+
+            horizontalStack.translatesAutoresizingMaskIntoConstraints = false
+            horizontalStack.distribution = .equalCentering
+            horizontalStack.alignment = .center
+            horizontalStack.axis = .horizontal
+
+            for row in 0..<4 {
+                let card = cards[column * 4 + row]
+                card.configureView()
+                horizontalStack.addArrangedSubview(card)
+
+                NSLayoutConstraint.activate([
+                    card.heightAnchor.constraint(equalTo: horizontalStack.heightAnchor, constant: -20),
+                    card.widthAnchor.constraint(equalTo: horizontalStack.widthAnchor, multiplier: 0.23)
+                ])
             }
+
+            verticalStackView.addArrangedSubview(horizontalStack)
+        }
+
+        // Vertical Stack Constraints
+        NSLayoutConstraint.activate([
+            verticalStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            verticalStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            verticalStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            verticalStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
+        ])
+
+        // Horizontal Stack Constraints
+        verticalStackView.arrangedSubviews.forEach { hStack in
+            NSLayoutConstraint.activate([
+                hStack.widthAnchor.constraint(equalTo: verticalStackView.widthAnchor, multiplier: 0.95),
+                hStack.heightAnchor.constraint(equalTo: verticalStackView.heightAnchor, multiplier: 0.25)
+            ])
         }
     }
 }
-
