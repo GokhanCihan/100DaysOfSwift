@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var verticalStackView = UIStackView()
 
     var pairArray = [Pair]()
@@ -43,8 +43,9 @@ class ViewController: UIViewController {
         // Create cards
         for pair in self.pairArray {
             let card = CardView()
-
             card.frontSideView.text = pair.value
+            
+            attachTapGestureRecognizer(to: card)
             cards.append(card)
         }
 
@@ -86,5 +87,21 @@ class ViewController: UIViewController {
                 hStack.heightAnchor.constraint(equalTo: verticalStackView.heightAnchor, multiplier: 0.25)
             ])
         }
+    }
+    
+    func attachTapGestureRecognizer(to card: CardView) {
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.addTarget(self, action: #selector(handleTapGesture))
+        tapGestureRecognizer.delegate = self
+        
+        tapGestureRecognizer.numberOfTapsRequired = 1
+        tapGestureRecognizer.delaysTouchesBegan = false
+        
+        
+        card.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    @objc func handleTapGesture(_ sender: UITapGestureRecognizer) {
+
     }
 }
