@@ -11,9 +11,9 @@ struct Pairs {
     let pairOne: Pair
     let pairTwo: Pair
 
-    init(_ pairOne: Pair, _ pairTwo: Pair) {
-        self.pairOne = pairOne
-        self.pairTwo = pairTwo
+    init(_ value: String, _ valueTwo: String) {
+        self.pairOne = Pair(value)
+        self.pairTwo = Pair(valueTwo)
     }
 }
 
