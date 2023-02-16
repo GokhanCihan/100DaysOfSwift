@@ -102,6 +102,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func handleTapGesture(_ sender: UITapGestureRecognizer) {
-
+        if let viewAttached = sender.view as? CardView {
+            viewAttached.flipSide()
+        }
     }
 }

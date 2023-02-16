@@ -31,14 +31,9 @@ class CardView: UIView {
 }
 extension CardView {
     func configureView() {
-        if side == .front {
-            frontSideView.isHidden = true
-            backSideView.isHidden = false
-        } else {
-            frontSideView.isHidden = false
-            backSideView.isHidden = true
-        }
-
+        frontSideView.isHidden = true
+        backSideView.isHidden = false
+        
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.borderWidth = 0.5
 
@@ -68,5 +63,18 @@ extension CardView {
             backSideView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             backSideView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
+    }
+    
+    func flipSide() {
+        switch self.side {
+        case .front:
+            self.side = .back
+            self.frontSideView.isHidden = true
+            self.backSideView.isHidden = false
+        case .back:
+            self.side = .front
+            self.frontSideView.isHidden = false
+            self.backSideView.isHidden = true
+        }
     }
 }
