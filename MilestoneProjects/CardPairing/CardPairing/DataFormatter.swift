@@ -8,11 +8,17 @@
 import Foundation
 
 struct DataFormatter {
-    func createPairs(_ index: Int) -> Pairs {
+    func createPairs(_ index: Int) -> (Pair, Pair) {
         let mockData = MockData()
-        let symbol = mockData.symbol
-        let reading = mockData.reading
-        
-        return Pairs(symbol[index], reading[index])
+        let symbolData = mockData.symbol
+        let readingData = mockData.reading
+
+        var symbol = Pair(symbolData[index])
+        var reading = Pair(readingData[index])
+
+        symbol = symbol.matching(with: reading)
+        reading = reading.matching(with: symbol)
+
+        return (symbol, reading)
     }
 }
