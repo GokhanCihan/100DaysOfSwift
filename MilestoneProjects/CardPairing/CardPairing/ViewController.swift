@@ -8,25 +8,38 @@
 import UIKit
 
 class ViewController: UIViewController, UIGestureRecognizerDelegate {
+
+    enum Status {
+        case searching
+        case success
+        case fail
+        case win
+    }
+
     var verticalStackView = UIStackView()
+
+    var status = Status.searching
 
     var pairArray = [Pair]()
     var cards = [CardView]()
-
+    var flippedCards = [CardView]()
     let numberOfPairs = 8
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureData()
         self.configureLayout()
+        
     }
 
     func configureData() {
-        for _ in 0..<self.numberOfPairs {
-            let pairs = Pairs(Pair("円"), Pair("en"))
+        let formatter = DataFormatter()
 
-            self.pairArray.append(pairs.pairOne)
-            self.pairArray.append(pairs.pairTwo)
+        for number in 0..<self.numberOfPairs {
+            let pairs = formatter.createPairs(number)
+
+            self.pairArray.append(pairs.0)
+            self.pairArray.append(pairs.1)
         }
 
         self.pairArray.shuffle()
@@ -43,8 +56,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         // Create cards
         for pair in self.pairArray {
             let card = CardView()
-            card.frontSideView.text = pair.value
-            
+            card.pair = pair
+
             attachTapGestureRecognizer(to: card)
             cards.append(card)
         }
@@ -88,22 +101,45 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             ])
         }
     }
-    
+
     func attachTapGestureRecognizer(to card: CardView) {
         let tapGestureRecognizer = UITapGestureRecognizer()
         tapGestureRecognizer.addTarget(self, action: #selector(handleTapGesture))
         tapGestureRecognizer.delegate = self
-        
+
         tapGestureRecognizer.numberOfTapsRequired = 1
         tapGestureRecognizer.delaysTouchesBegan = false
-        
-        
+
         card.addGestureRecognizer(tapGestureRecognizer)
     }
-    
+
     @objc func handleTapGesture(_ sender: UITapGestureRecognizer) {
         if let viewAttached = sender.view as? CardView {
-            viewAttached.flipSide()
+            if flippedCards.count < 2 {
+                viewAttached.flipSide()
+                flippedCards.append(viewAttached)
+            }
+            if flippedCards.count == 2 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.matchResult()
+                }
+            }
         }
+    }
+
+    func matchResult() {
+        if let pair = flippedCards[0].pair, let otherPair = flippedCards[1].pair {
+            if pair.isMatch(of: otherPair){
+                self.status = .success
+            } else {
+                self.status = .fail
+            }
+        } else {
+            fatalError("Found nil: no pairs to compare etc!!!!")
+        }
+    }
+
+    func updateGame() {
+//        for status changing do something
     }
 }
