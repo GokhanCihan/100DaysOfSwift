@@ -12,21 +12,23 @@ enum Side {
     case back
 }
 class CardView: UIView {
-    var side = Side.back
-
-    // front side of the card
-    var frontSideView = UILabel()
-
-    // back side of the card
-    var backSideView = UIImageView()
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    var pair: Pair? {
+        didSet {
+            frontSideView.text = self.pair?.value
+        }
     }
+
+    private var side = Side.back
+    private var frontSideView = UILabel()
+    private var backSideView = UIImageView()
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
         self.isUserInteractionEnabled = true
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
 extension CardView {
@@ -64,7 +66,7 @@ extension CardView {
             backSideView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
-    
+
     func flipSide() {
         switch self.side {
         case .front:
