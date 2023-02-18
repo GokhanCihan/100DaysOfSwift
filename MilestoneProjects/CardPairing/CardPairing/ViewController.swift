@@ -10,19 +10,29 @@ import UIKit
 class ViewController: UIViewController, UIGestureRecognizerDelegate {
 
     enum Status {
-        case searching
-        case success
-        case fail
+        case allDown
+        case searchingPair
         case win
     }
 
+    enum Result {
+        case fail
+        case success
+    }
+
+    var status = Status.allDown
+
+    var match: Result? {
+        didSet { endMatch(match) }
+    }
+
+    var firstCard = CardView()
+    var secondCard = CardView()
+
     var verticalStackView = UIStackView()
-
-    var status = Status.searching
-
     var pairArray = [Pair]()
     var cards = [CardView]()
-    var flippedCards = [CardView]()
+
     let numberOfPairs = 8
 
     override func viewDidLoad() {
@@ -114,46 +124,46 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 
     @objc func handleTapGesture(_ sender: UITapGestureRecognizer) {
-        if let viewAttached = sender.view as? CardView {
-            flippedCards.append(viewAttached)
-            viewAttached.flipSide()
-            if flippedCards.count == 2 {
+        if let viewTapped = sender.view as? CardView {
+            switch self.status {
+            case .allDown:
+                self.firstCard = viewTapped
+                firstCard.flipSide()
+
+                self.status = .searchingPair
+            case .searchingPair:
+                self.secondCard = viewTapped
+                self.secondCard.flipSide()
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    self.matchResult()
+                    if let pair = self.firstCard.pair, let otherPair = self.secondCard.pair {
+                        if pair.isMatch(of: otherPair){
+                            self.match = .success
+                        } else {
+                            self.match = .fail
+                        }
+                    }
                 }
+            case .win:
+                self.alertWin()
             }
         }
     }
 
-    func matchResult() {
-        if let pair = flippedCards[0].pair, let otherPair = flippedCards[1].pair {
-            if pair.isMatch(of: otherPair){
-                self.status = .success
-            } else {
-                self.status = .fail
+    func endMatch(_ result: Result?) {
+        if let result = result {
+            switch result {
+            case .success:
+                self.verticalStackView.removeArrangedSubview(self.firstCard)
+                self.verticalStackView.removeArrangedSubview(self.secondCard)
+            case .fail:
+                self.firstCard.flipSide()
+                self.secondCard.flipSide()
             }
-        } else {
-            fatalError("Found nil: no pairs to compare etc!!!!")
+            self.status = .allDown
         }
-        self.updateGame()
     }
 
-    func updateGame() {
-        switch self.status {
-        case .success:
-            self.flippedCards.forEach{ verticalStackView.removeArrangedSubview($0) }
-            self.flippedCards.removeAll()
-            self.status = .searching
-        case .fail:
-            self.flippedCards.forEach{ $0.flipSide() }
-            self.flippedCards.removeAll()
-        case .win:
-            self.alertWin()
-        default:
-            break
-        }
-    }
-    
     func alertWin() {
         let ac = UIAlertController(title: "W I N !", message: "You have succesfully matched all cards.\n\tCongratulations!!!", preferredStyle: .actionSheet)
         
@@ -164,9 +174,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             // Show final game screen
         })
         ac.addAction(UIAlertAction(title: "Quit Game", style: .destructive) { _ in
-            
+            // Exit
         })
-        
+
         self.present(ac, animated: true)
     }
 }
