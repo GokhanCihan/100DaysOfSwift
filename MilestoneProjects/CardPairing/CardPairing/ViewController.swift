@@ -115,12 +115,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
 
     @objc func handleTapGesture(_ sender: UITapGestureRecognizer) {
         if let viewAttached = sender.view as? CardView {
-            if flippedCards.count < 2 {
-                viewAttached.flipSide()
-                flippedCards.append(viewAttached)
-            }
+            flippedCards.append(viewAttached)
+            viewAttached.flipSide()
             if flippedCards.count == 2 {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.matchResult()
                 }
             }
@@ -137,9 +135,23 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         } else {
             fatalError("Found nil: no pairs to compare etc!!!!")
         }
+        self.updateGame()
     }
 
     func updateGame() {
-//        for status changing do something
+        switch self.status {
+        case .success:
+            self.flippedCards.forEach{ verticalStackView.removeArrangedSubview($0) }
+            self.flippedCards.removeAll()
+            self.status = .searching
+        case .fail:
+            self.flippedCards.forEach{ $0.flipSide() }
+            self.flippedCards.removeAll()
+        case .win:
+            // Alert WIN
+            print("win")
+        default:
+            break
+        }
     }
 }
