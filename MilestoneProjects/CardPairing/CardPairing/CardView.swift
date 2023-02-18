@@ -15,6 +15,11 @@ class CardView: UIView {
     var pair: Pair? {
         didSet {
             frontSideView.text = self.pair?.value
+            if self.pair == nil {
+                self.frontSideView.backgroundColor = .none
+                self.layer.borderWidth = 0
+                self.isUserInteractionEnabled = false
+            }
         }
     }
 
