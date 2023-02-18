@@ -148,10 +148,25 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             self.flippedCards.forEach{ $0.flipSide() }
             self.flippedCards.removeAll()
         case .win:
-            // Alert WIN
-            print("win")
+            self.alertWin()
         default:
             break
         }
+    }
+    
+    func alertWin() {
+        let ac = UIAlertController(title: "W I N !", message: "You have succesfully matched all cards.\n\tCongratulations!!!", preferredStyle: .actionSheet)
+        
+        ac.addAction(UIAlertAction(title: "Start New Game", style: .default) { _ in
+            // Game starts again
+        })
+        ac.addAction(UIAlertAction(title: "Stay", style: .cancel) { ac in
+            // Show final game screen
+        })
+        ac.addAction(UIAlertAction(title: "Quit Game", style: .destructive) { _ in
+            
+        })
+        
+        self.present(ac, animated: true)
     }
 }
