@@ -33,7 +33,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var pairArray = [Pair]()
     var cards = [CardView]()
 
-    let numberOfPairs = 8
+    var numberOfPairs = 8
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -154,13 +154,22 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         if let result = result {
             switch result {
             case .success:
+                self.numberOfPairs -= 1
+                self.firstCard.pair = nil
+                self.secondCard.pair = nil
                 self.verticalStackView.removeArrangedSubview(self.firstCard)
                 self.verticalStackView.removeArrangedSubview(self.secondCard)
+                
+                if numberOfPairs == 0 {
+                    self.status = .win
+                } else {
+                    self.status = .allDown
+                }
             case .fail:
                 self.firstCard.flipSide()
                 self.secondCard.flipSide()
+                self.status = .allDown
             }
-            self.status = .allDown
         }
     }
 
